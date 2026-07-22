@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bduw5gb057ino"]
 
 [ext_resource type="Script" uid="uid://6fsf3wirayay" path="res://scripts/game.gd" id="1_5vnjt"]
-[ext_resource type="PackedScene" uid="uid://cqpatfifsn3sg" path="res://scenes/player.tscn" id="2_n47hv"]
-[ext_resource type="PackedScene" uid="uid://iqdtrxlra3lw" path="res://scenes/game_timer.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://cqpatfifsn3sg" path="res://Scenes/player.tscn" id="2_n47hv"]
+[ext_resource type="PackedScene" uid="uid://iqdtrxlra3lw" path="res://Scenes/game_timer.tscn" id="3_lnu2h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7nvpe"]
 size = Vector2(1024, 55.3125)
@@ -10,55 +10,55 @@ size = Vector2(1024, 55.3125)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_akqs3"]
 size = Vector2(64, 528)
 
-[node name="Game" type="Node2D" unique_id=1846741245]
+[node name="Game" type="Node2D" unique_id=4719189]
 script = ExtResource("1_5vnjt")
 shake_decay_rate = 5.0
 
-[node name="Background" type="Polygon2D" parent="." unique_id=296448679]
+[node name="Background" type="Polygon2D" parent="." unique_id=1502810832]
 z_index = -50
 color = Color(0, 0.0705882, 0.0980392, 1)
 polygon = PackedVector2Array(-832, -896, -832, 1408, 2176, 1408, 2176, -896)
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Background" unique_id=162487693]
+[node name="StaticBody2D2" type="StaticBody2D" parent="Background" unique_id=1900450127]
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D2" unique_id=2077050894]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D2" unique_id=417568546]
 position = Vector2(576, 27.6563)
 shape = SubResource("RectangleShape2D_7nvpe")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Background" unique_id=889940750]
+[node name="StaticBody2D" type="StaticBody2D" parent="Background" unique_id=885304065]
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D" unique_id=1509898714]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D" unique_id=1752406766]
 position = Vector2(576, 611)
 shape = SubResource("RectangleShape2D_7nvpe")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="Background" unique_id=442902055]
+[node name="StaticBody2D3" type="StaticBody2D" parent="Background" unique_id=1193594408]
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D3" unique_id=784267586]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D3" unique_id=1013471627]
 position = Vector2(32, 320)
 shape = SubResource("RectangleShape2D_akqs3")
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="Background" unique_id=1888532600]
+[node name="StaticBody2D4" type="StaticBody2D" parent="Background" unique_id=1587104435]
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D4" unique_id=918285932]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D4" unique_id=1386532941]
 position = Vector2(1120, 320)
 shape = SubResource("RectangleShape2D_akqs3")
 
-[node name="Ground" type="Polygon2D" parent="." unique_id=2070150428]
+[node name="Ground" type="Polygon2D" parent="." unique_id=2103978144]
 z_index = -49
 color = Color(0.913725, 0.847059, 0.65098, 1)
 polygon = PackedVector2Array(64, 56, 64, 320, 64, 584, 1088, 584, 1088, 56)
 
-[node name="Player" parent="." unique_id=1563830925 instance=ExtResource("2_n47hv")]
+[node name="Player" parent="." unique_id=1572894333 instance=ExtResource("2_n47hv")]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=589097369]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2053245044]
 position = Vector2(576, 323)
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=278445691]
