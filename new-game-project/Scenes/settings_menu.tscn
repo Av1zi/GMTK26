@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://ewc1fesxdahm"]
+
+[ext_resource type="PackedScene" uid="uid://cveje662mdhmf" path="res://Scenes/volume_slider.tscn" id="1_8ef0u"]
+[ext_resource type="Script" uid="uid://i6445kxw4vvt" path="res://Scripts/button.gd" id="2_7y5a0"]
+
+[node name="Settings menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -343.0
+offset_top = -176.0
+offset_right = 343.0
+offset_bottom = 199.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "Settings "
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Master volume"
+horizontal_alignment = 1
+
+[node name="Master slider" parent="VBoxContainer" instance=ExtResource("1_8ef0u")]
+layout_mode = 2
+bus_name = "Master"
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Music  volume"
+horizontal_alignment = 1
+
+[node name="Music slider" parent="VBoxContainer" instance=ExtResource("1_8ef0u")]
+layout_mode = 2
+bus_name = "Music"
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Sfx  volume"
+horizontal_alignment = 1
+
+[node name="Sfx slider" parent="VBoxContainer" instance=ExtResource("1_8ef0u")]
+layout_mode = 2
+bus_name = "Sfx"
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "                   Back                   "
+script = ExtResource("2_7y5a0")
+
+[connection signal="pressed" from="VBoxContainer/Button" to="VBoxContainer/Button" method="_on_pressed"]

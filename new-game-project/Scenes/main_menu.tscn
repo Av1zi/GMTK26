@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dp1rykx7lq8xa"]
+
+[ext_resource type="Script" uid="uid://cd4cfo1cfdbdl" path="res://Scripts/buttons.gd" id="1_28flt"]
+
+[node name="Main menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button Box" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -245.0
+offset_top = -145.5
+offset_right = 245.0
+offset_bottom = 145.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_28flt")
+
+[node name="Start button" type="Button" parent="Button Box"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Start  "
+
+[node name="Settings button" type="Button" parent="Button Box"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Settings"
+
+[node name="Quit button" type="Button" parent="Button Box"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Quit"
+
+[connection signal="pressed" from="Button Box/Start button" to="Button Box" method="_on_start_button_pressed"]
+[connection signal="pressed" from="Button Box/Settings button" to="Button Box" method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Button Box/Quit button" to="Button Box" method="_on_quit_button_pressed"]
