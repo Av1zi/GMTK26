@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cqpatfifsn3sg"]
 
-[ext_resource type="Script" uid="uid://clds3vvemuedu" path="res://Scripts/player.gd" id="1_sy1wy"]
-[ext_resource type="AudioStream" uid="uid://b5y5j2t81dq1l" path="res://Assets/sound_effects/laserShoot.wav" id="2_qiobg"]
-[ext_resource type="Texture2D" uid="uid://d3angyo2ditf0" path="res://Assets/vampire.png" id="2_vgqql"]
-[ext_resource type="Texture2D" uid="uid://f3bwhpxp5r1t" path="res://Assets/GUN.png" id="3_vgqql"]
+[ext_resource type="Script" uid="uid://clds3vvemuedu" path="res://scripts/player.gd" id="1_sy1wy"]
+[ext_resource type="AudioStream" uid="uid://b5y5j2t81dq1l" path="res://assets/sound_effects/laserShoot.wav" id="2_qiobg"]
+[ext_resource type="Texture2D" uid="uid://d3angyo2ditf0" path="res://assets/vampire.png" id="2_vgqql"]
+[ext_resource type="Texture2D" uid="uid://f3bwhpxp5r1t" path="res://assets/gun.png" id="3_vgqql"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x1lq2"]
 radius = 32.01562
@@ -141,6 +141,7 @@ scale = Vector2(-1, 1)
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_sy1wy")
+melee_range = 20.0
 
 [node name="CollisionBodyLR" type="CollisionShape2D" parent="." unique_id=1693696865]
 rotation = 0.010237323
@@ -186,8 +187,13 @@ libraries/ = SubResource("AnimationLibrary_pwo6r")
 wait_time = 0.2
 one_shot = true
 
+[node name="MeleeTimer" type="Timer" parent="." unique_id=726973211]
+wait_time = 0.2
+one_shot = true
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1899506427]
 stream = ExtResource("2_qiobg")
 volume_db = -12.0
 
 [connection signal="timeout" from="ShotTimer" to="." method="_on_shot_timer_timeout"]
+[connection signal="timeout" from="MeleeTimer" to="." method="_on_melee_timer_timeout"]
