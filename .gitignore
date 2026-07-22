@@ -1,12 +1,42 @@
-### Windows
-# Windows thumbnail cache files
+# ==========================================
+# Godot-specific Ignores
+# ==========================================
+
+# Godot 4+ cache and local editor settings
+.godot/
+.nomedia
+
+# Godot 3+ local asset import cache (Do NOT ignore individual *.import files)
+.import/
+
+# Local export configurations
+# Remove these if you intentionally want to share build configs with team members
+export.cfg
+export_credentials.cfg
+
+# Automatically generated translations from CSV files
+*.translation
+
+# Temporary files generated during runtime/building
+*.tmp
+
+# ==========================================
+# Mono / C# Specific Ignores (If using C#)
+# ==========================================
+.mono/
+data_*/
+mono_crash.*.json
+
+# ==========================================
+# System & IDE Ignores (Optional but recommended)
+# ==========================================
+# macOS
+.DS_Store
+
+# Windows
 Thumbs.db
+Desktop.ini
 
-# Folder config file
-[Dd]esktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows shortcuts
-*.lnk
+# Visual Studio Code / JetBrains
+.vscode/
+.idea/
