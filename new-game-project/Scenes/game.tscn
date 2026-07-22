@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://6fsf3wirayay" path="res://scripts/game.gd" id="1_5vnjt"]
 [ext_resource type="PackedScene" uid="uid://cqpatfifsn3sg" path="res://Scenes/player.tscn" id="2_n47hv"]
+[ext_resource type="PackedScene" uid="uid://iqdtrxlra3lw" path="res://Scenes/game_timer.tscn" id="3_lnu2h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7nvpe"]
 size = Vector2(1024, 55.3125)
@@ -59,3 +60,22 @@ polygon = PackedVector2Array(64, 56, 64, 320, 64, 584, 1088, 584, 1088, 56)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2053245044]
 position = Vector2(576, 323)
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=278445691]
+
+[node name="HUD" type="Control" parent="UILayer" unique_id=1871825503]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Game timer" parent="UILayer/HUD" unique_id=1192232744 instance=ExtResource("3_lnu2h")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.1
+anchor_right = 0.5
+anchor_bottom = 0.1
+grow_vertical = 1
