@@ -24,6 +24,10 @@ config/icon="res://icon.svg"
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[global_group]
+
+enemy=""
+
 [input]
 
 move_up={
