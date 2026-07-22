@@ -6,6 +6,7 @@ signal enemy_destroyed(enemy)
 @export var preferred_distance: float = 480.0   # ~15m if 1m = 32px, adjust to your scale
 @export var distance_tolerance: float = 40.0
 @export var shot_cooldown: float = 1.2
+@export var time_gained_on_death: float = 5.0
 
 var player: CharacterBody2D
 var push_dir: Vector2 = Vector2(0, 0)
@@ -77,6 +78,7 @@ func get_hit(damage: int, bullet_trans: Transform2D):
 	set_push(Vector2.RIGHT.rotated(bullet_trans.get_rotation()), 150.0, 0.1)
 
 func destroy():
+	get_tree().call_group("game_timer", "modify_time", time_gained_on_death)
 	enemy_destroyed.emit(self)
 	queue_free()
 
