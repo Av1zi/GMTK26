@@ -7,6 +7,7 @@ var enemy_list: Array = []
 var noise_i: float = 0.0
 var shake_strength: float = 0.0
 @onready var camera: Camera2D = $Camera2D
+@onready var death_screen: Control = $"UILayer/HUD/Death Screen"
 @onready var enemy_class = preload("res://Scenes/enemy.tscn")
 @onready var sun_enemy_class = preload("res://Scenes/enemySun.tscn")  # adjust path/filename to match yours
 @onready var player: CharacterBody2D = $Player
@@ -63,3 +64,14 @@ func get_random_offset() -> Vector2:
 func on_enemy_destroyed(enemy):
 	shake_strength = noise_shake_strength
 	enemy_list.erase(enemy)
+
+
+func _on_game_timer_time_expired():
+	get_tree().call_group("enemy", "queue_free")
+	death_screen.visible = true
+	get_tree().paused = true
+	
+
+func _on_button_pressed():
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn") # main menu button
+		

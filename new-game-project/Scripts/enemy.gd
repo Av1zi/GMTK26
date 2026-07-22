@@ -81,3 +81,4 @@ func _on_animation_tree_animation_finished(anim_name):
 	elif anim_name == "destroy":
 		animation_tree['parameters/conditions/is_destroyed'] = false
 		destroy()
+		
