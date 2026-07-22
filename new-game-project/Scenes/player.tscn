@@ -138,10 +138,8 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" unique_id=705610136 groups=["player"]]
 scale = Vector2(-1, 1)
-collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_sy1wy")
-melee_range = 20.0
 
 [node name="CollisionBodyLR" type="CollisionShape2D" parent="." unique_id=1693696865]
 rotation = 0.010237323
@@ -195,5 +193,8 @@ one_shot = true
 stream = ExtResource("2_qiobg")
 volume_db = -12.0
 
+[node name="IFrameTimer" type="Timer" parent="." unique_id=1074545410]
+
 [connection signal="timeout" from="ShotTimer" to="." method="_on_shot_timer_timeout"]
 [connection signal="timeout" from="MeleeTimer" to="." method="_on_melee_timer_timeout"]
+[connection signal="timeout" from="IFrameTimer" to="." method="_on_i_frame_timer_timeout"]
