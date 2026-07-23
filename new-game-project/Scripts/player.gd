@@ -12,6 +12,8 @@ extends CharacterBody2D
 @export var shot_cooldown: float = 0.5
 @export var melee_cooldown: float = 1.2
 @export var bullet_damage: float = 30
+@export var slash_dmg: float = 20
+@export var xp_gain_mult: float = 1
 var screen_size
 var lr: bool = true
 var aim_pos: Vector2 = Vector2(0, 0)
@@ -44,7 +46,7 @@ func get_xp_to_next_level() -> int:
 	return int(base_xp_to_level * pow(xp_growth_rate, level - 1))
 
 func add_xp(amount: int):
-	current_xp += amount
+	current_xp += amount * xp_gain_mult
 	var needed = get_xp_to_next_level()
 	while current_xp >= needed:
 		current_xp -= needed
@@ -133,7 +135,7 @@ func melee():
 	var spawn_pos = global_position + aim_pos * melee_range
 	var spawn_trans = Transform2D(aim_pos.angle(), spawn_pos) 
 	
-	slash.setup(spawn_trans)
+	slash.setup(spawn_trans,slash_dmg)
 	get_tree().root.add_child(slash)
 	set_push(Vector2.RIGHT.rotated(aim_pos.angle()), 120.0, 0.15) # same fix here for player recoil direction
 	audio_player.play()

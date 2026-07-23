@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://ewc1fesxdahm"]
 
-[ext_resource type="PackedScene" uid="uid://cveje662mdhmf" path="res://Scenes/volume_slider.tscn" id="1_8ef0u"]
-[ext_resource type="Script" uid="uid://i6445kxw4vvt" path="res://Scripts/button.gd" id="2_7y5a0"]
+[ext_resource type="PackedScene" uid="uid://cveje662mdhmf" path="res://scenes/volume_slider.tscn" id="1_8ef0u"]
+[ext_resource type="Script" uid="uid://i6445kxw4vvt" path="res://scripts/button.gd" id="2_7y5a0"]
+[ext_resource type="Theme" uid="uid://dg40rt6poq8uy" path="res://THEME.tres" id="2_wswnh"]
 
-[node name="Settings menu" type="Control"]
+[node name="Settings menu" type="Control" unique_id=1183996973]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,61 +12,62 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=708096783]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -343.0
-offset_top = -176.0
-offset_right = 343.0
-offset_bottom = 199.0
+offset_left = -226.48999
+offset_top = -187.5
+offset_right = 226.48999
+offset_bottom = 187.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="Label4" type="Label" parent="VBoxContainer"]
+[node name="Label4" type="Label" parent="VBoxContainer" unique_id=1710834615]
 layout_mode = 2
 theme_override_font_sizes/font_size = 31
 text = "Settings "
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=511100728]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1437555608]
 layout_mode = 2
 text = "Master volume"
 horizontal_alignment = 1
 
-[node name="Master slider" parent="VBoxContainer" instance=ExtResource("1_8ef0u")]
+[node name="Master slider" parent="VBoxContainer" unique_id=1581686026 instance=ExtResource("1_8ef0u")]
 layout_mode = 2
 bus_name = "Master"
 
-[node name="Label2" type="Label" parent="VBoxContainer"]
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=1128716785]
 layout_mode = 2
 text = "Music  volume"
 horizontal_alignment = 1
 
-[node name="Music slider" parent="VBoxContainer" instance=ExtResource("1_8ef0u")]
+[node name="Music slider" parent="VBoxContainer" unique_id=901153358 instance=ExtResource("1_8ef0u")]
 layout_mode = 2
 bus_name = "Music"
 
-[node name="Label3" type="Label" parent="VBoxContainer"]
+[node name="Label3" type="Label" parent="VBoxContainer" unique_id=498863404]
 layout_mode = 2
 text = "Sfx  volume"
 horizontal_alignment = 1
 
-[node name="Sfx slider" parent="VBoxContainer" instance=ExtResource("1_8ef0u")]
+[node name="Sfx slider" parent="VBoxContainer" unique_id=1073315896 instance=ExtResource("1_8ef0u")]
 layout_mode = 2
 bus_name = "Sfx"
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=1295843633]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
+theme = ExtResource("2_wswnh")
 text = "                   Back                   "
 script = ExtResource("2_7y5a0")
 
