@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://dp1rykx7lq8xa"]
 
-[ext_resource type="Script" uid="uid://cd4cfo1cfdbdl" path="res://Scripts/buttons.gd" id="1_28flt"]
+[ext_resource type="Script" uid="uid://cd4cfo1cfdbdl" path="res://scripts/buttons.gd" id="1_28flt"]
+[ext_resource type="Theme" uid="uid://dg40rt6poq8uy" path="res://THEME.tres" id="2_ekxnf"]
 
-[node name="Main menu" type="Control"]
+[node name="Main menu" type="Control" unique_id=1065305904]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,7 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button Box" type="VBoxContainer" parent="."]
+[node name="Button Box" type="VBoxContainer" parent="." unique_id=239772140]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -23,22 +24,41 @@ offset_right = 245.0
 offset_bottom = 145.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 16
 script = ExtResource("1_28flt")
 
-[node name="Start button" type="Button" parent="Button Box"]
+[node name="Start button" type="Button" parent="Button Box" unique_id=1465533820]
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 3
+theme = ExtResource("2_ekxnf")
 text = "Start  "
 
-[node name="Settings button" type="Button" parent="Button Box"]
+[node name="Settings button" type="Button" parent="Button Box" unique_id=1934798941]
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 3
+theme = ExtResource("2_ekxnf")
 text = "Settings"
 
-[node name="Quit button" type="Button" parent="Button Box"]
+[node name="Quit button" type="Button" parent="Button Box" unique_id=1766275452]
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 3
+theme = ExtResource("2_ekxnf")
 text = "Quit"
+
+[node name="TITLE" type="Label" parent="." unique_id=476921278]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -288.0
+offset_top = 70.0
+offset_right = 283.0
+offset_bottom = 134.0
+grow_horizontal = 2
+scale = Vector2(1.0166063, 1.0933421)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 46
+text = "Count Down's Bullet Time"
 
 [connection signal="pressed" from="Button Box/Start button" to="Button Box" method="_on_start_button_pressed"]
 [connection signal="pressed" from="Button Box/Settings button" to="Button Box" method="_on_settings_button_pressed"]
