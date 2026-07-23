@@ -32,8 +32,8 @@ static func get_pool() -> Array:
 		},
 		{
 			"name": "Heavy Rounds",
-			"desc": "Bullets deal more damage",
+			"desc": "+10 bullet damage",
 			"time_cost": 0.1,
-			"apply": func(p): p.bullet_damage += 1  # add this var to player/bullet
+			"apply": func(p): p.bullet_damage += 10
 		},
 	]

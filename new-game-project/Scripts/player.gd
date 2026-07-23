@@ -11,6 +11,7 @@ extends CharacterBody2D
 @export var shot_timer_reduction = -0.5
 @export var shot_cooldown: float = 0.5
 @export var melee_cooldown: float = 1.2
+@export var bullet_damage: float = 30
 var screen_size
 var lr: bool = true
 var aim_pos: Vector2 = Vector2(0, 0)
@@ -119,12 +120,12 @@ func shoot():
 	get_tree().call_group("game_timer", "modify_time", shot_timer_reduction)
 	body_rotete_player.play("Shot")
 	var bullet = bullet_scene.instantiate()
-	bullet.setup(bullet_spawn_pos.global_transform)
+	bullet.setup(bullet_spawn_pos.global_transform, bullet_damage)
 	get_tree().root.add_child(bullet)
 	shot_effect.emitting = true
 	set_push(Vector2.RIGHT.rotated(body_rotate.rotation), 200.0, 0.2)
 	audio_player.play()
-
+	
 func melee():
 	body_rotete_player.play("Shot")
 	var slash = slash_scene.instantiate()

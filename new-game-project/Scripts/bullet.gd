@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var speed: float = 800.0
-@export var damage: int = 30
+var damage: int
 
 @onready var bullet_particle = preload("res://scenes/bullet_particle.tscn")
 @onready var bullet_hit_sound = preload("res://scenes/bullet_hit_sound.tscn")
@@ -9,8 +9,10 @@ extends Area2D
 func _physics_process(delta):
 	position += transform.x * speed * delta
 
-func setup(trans: Transform2D):
+func setup(trans: Transform2D, dmg: int = damage):
 	transform = trans
+	damage = dmg
+
 
 func _on_body_entered(body):
 	if body.is_in_group("enemy"):
