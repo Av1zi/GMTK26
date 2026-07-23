@@ -16,8 +16,10 @@ var shake_strength: float = 0.0
 @onready var xp_bar: ProgressBar = $UILayer/HUD/XPBar
 @onready var level_label: Label = $UILayer/HUD/XPBar/LevelLabel
 var round_number: int = 0
+@onready var level_up_ui = $"Level up ui"
 
 func _ready():
+	level_up_ui.setup(player)
 	var screen_size = get_viewport_rect().size
 	start_pos = Vector2(screen_size.x/2, screen_size.y/2)
 	player.setup(start_pos)
