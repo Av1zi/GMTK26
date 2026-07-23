@@ -308,6 +308,7 @@ collision_layer = 2
 collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_cd24m")
+base_attack_damage = -10
 min_scale = 0.8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=821535364]
