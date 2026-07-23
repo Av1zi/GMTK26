@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://6fsf3wirayay" path="res://Scripts/game.gd" id="1_5vnjt"]
 [ext_resource type="PackedScene" uid="uid://cqpatfifsn3sg" path="res://Scenes/player.tscn" id="2_n47hv"]
 [ext_resource type="PackedScene" uid="uid://iqdtrxlra3lw" path="res://Scenes/game_timer.tscn" id="3_lnu2h"]
+[ext_resource type="Script" uid="uid://i6445kxw4vvt" path="res://Scripts/button.gd" id="4_lbhrr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7nvpe"]
 size = Vector2(1024, 55.3125)
@@ -20,7 +21,7 @@ color = Color(0, 0.0705882, 0.0980392, 1)
 polygon = PackedVector2Array(-832, -896, -832, 1408, 2176, 1408, 2176, -896)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Background" unique_id=1900450127]
-collision_layer = 2
+collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D2" unique_id=417568546]
@@ -28,7 +29,7 @@ position = Vector2(576, 27.6563)
 shape = SubResource("RectangleShape2D_7nvpe")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Background" unique_id=885304065]
-collision_layer = 2
+collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D" unique_id=1752406766]
@@ -36,7 +37,7 @@ position = Vector2(576, 611)
 shape = SubResource("RectangleShape2D_7nvpe")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Background" unique_id=1193594408]
-collision_layer = 2
+collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D3" unique_id=1013471627]
@@ -44,7 +45,7 @@ position = Vector2(32, 320)
 shape = SubResource("RectangleShape2D_akqs3")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Background" unique_id=1587104435]
-collision_layer = 2
+collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D4" unique_id=1386532941]
@@ -79,3 +80,52 @@ anchor_top = 0.1
 anchor_right = 0.5
 anchor_bottom = 0.1
 grow_vertical = 1
+
+[node name="Death Screen" type="Control" parent="UILayer/HUD" unique_id=1611158158]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="UILayer/HUD/Death Screen" unique_id=1598211882]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UILayer/HUD/Death Screen/Panel" unique_id=519600713]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.205
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -11.5
+offset_right = 79.0
+offset_bottom = -147.66
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.06666667, 0.07450981, 1)
+theme_override_font_sizes/font_size = 40
+text = "you ded"
+
+[node name="Button" type="Button" parent="UILayer/HUD/Death Screen/Panel" unique_id=1242134780]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 282.0
+offset_right = 727.0
+offset_bottom = 341.0
+text = "Menu"
+script = ExtResource("4_lbhrr")
+
+[connection signal="time_expired" from="UILayer/HUD/Game timer" to="." method="_on_game_timer_time_expired"]
+[connection signal="pressed" from="UILayer/HUD/Death Screen/Panel/Button" to="." method="_on_button_pressed"]

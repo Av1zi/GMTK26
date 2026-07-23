@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://eex32t71582a"]
 
-[ext_resource type="Script" uid="uid://bhfsdu4pir0le" path="res://Scripts/sun_bullet.gd" id="1_761jw"]
-[ext_resource type="Texture2D" uid="uid://s7e4wxrto2e2" path="res://Assets/small sun.png" id="2_151tl"]
-[ext_resource type="AudioStream" uid="uid://dq05a2ska8t6s" path="res://Assets/sound_effects/hitHurt.wav" id="2_761jw"]
+[ext_resource type="Script" uid="uid://bhfsdu4pir0le" path="res://scripts/sun_bullet.gd" id="1_761jw"]
+[ext_resource type="Texture2D" uid="uid://s7e4wxrto2e2" path="res://assets/small sun.png" id="2_151tl"]
+[ext_resource type="AudioStream" uid="uid://dq05a2ska8t6s" path="res://assets/sound_effects/hitHurt.wav" id="2_761jw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3d8s6"]
 size = Vector2(18, 16)

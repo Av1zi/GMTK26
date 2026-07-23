@@ -2,6 +2,7 @@ extends CharacterBody2D
 signal enemy_destroyed(enemy)
 @export var health: int = 100
 @export var speed: float = 50.0
+@export var time_gained_on_death: float = 5.0
 @export var attack_damage: int = 10 # NEW
 @export var attack_cooldown: float = 1.0 # NEW — seconds between hits while player is in range
 var player: CharacterBody2D
@@ -60,6 +61,7 @@ func get_hit(damage: int, bullet_trans: Transform2D):
 	set_push(Vector2.RIGHT.rotated(bullet_trans.get_rotation()), 150.0, 0.1)
 	
 func destroy():
+	get_tree().call_group("game_timer", "modify_time", time_gained_on_death)
 	enemy_destroyed.emit(self)
 	queue_free()
 
@@ -81,3 +83,4 @@ func _on_animation_tree_animation_finished(anim_name):
 	elif anim_name == "destroy":
 		animation_tree['parameters/conditions/is_destroyed'] = false
 		destroy()
+		
