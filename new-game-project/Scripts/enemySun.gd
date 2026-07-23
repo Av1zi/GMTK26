@@ -69,7 +69,6 @@ func update_visual_size():
 	var health_percent = clamp(float(health) / float(max_health), 0.0, 1.0)
 	var current_scale = lerp(min_scale, size_scale, health_percent)
 	scale = Vector2(current_scale, current_scale)
-	print("health: ", health, " / ", max_health, " scale: ", current_scale, " min_scale: ", min_scale)  # TEMP
 
 func _physics_process(delta):
 	if is_invincible:

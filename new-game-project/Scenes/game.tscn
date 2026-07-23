@@ -4,8 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cqpatfifsn3sg" path="res://Scenes/player.tscn" id="2_n47hv"]
 [ext_resource type="PackedScene" uid="uid://iqdtrxlra3lw" path="res://Scenes/game_timer.tscn" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://i6445kxw4vvt" path="res://Scripts/button.gd" id="4_lbhrr"]
-[ext_resource type="Script" uid="uid://khjp5ujfv3fh" path="res://Scenes/xp_bar.gd" id="4_wowpa"]
-[ext_resource type="Script" uid="uid://cmmnukdk4yffy" path="res://Scenes/LevelUpUI.gd" id="6_u5sy4"]
+[ext_resource type="Script" uid="uid://cmmnukdk4yffy" path="res://Scripts/LevelUpUI.gd" id="6_u5sy4"]
 [ext_resource type="Script" uid="uid://behrtqn3jlawx" path="res://Scripts/UpgradePool.gd" id="7_gee14"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7nvpe"]
