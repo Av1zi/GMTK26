@@ -14,10 +14,10 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Top Down Template 2d"
+config/name="bullet time"
 run/main_scene="uid://dp1rykx7lq8xa"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://d3angyo2ditf0"
 
 [display]
 
