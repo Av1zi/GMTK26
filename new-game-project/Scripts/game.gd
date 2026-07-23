@@ -17,12 +17,14 @@ var round_number: int = 0
 @onready var rand = RandomNumberGenerator.new()
 @onready var xp_bar: ProgressBar = $UILayer/HUD/XPBar
 @onready var level_label: Label = $UILayer/HUD/XPBar/LevelLabel
+@onready var level_up_ui = $"Level up ui"
 
 func _ready():
 	var screen_size = get_viewport_rect().size
 	start_pos = Vector2(screen_size.x/2, screen_size.y/2)
 	player.setup(start_pos)
 	player.xp_changed.emit(player.current_xp, player.get_xp_to_next_level())
+	level_up_ui.setup(player)   # NEW
 	rand.randomize()
 	noise.seed = rand.randi()
 	noise.frequency = 0.1

@@ -145,6 +145,7 @@ _data = {
 scale = Vector2(-1, 1)
 motion_mode = 1
 script = ExtResource("1_sy1wy")
+current_xp = 99
 hurt_sounds = Array[AudioStream]([ExtResource("2_f1ek2"), ExtResource("3_tx1dd"), ExtResource("4_gymyn")])
 
 [node name="CollisionBodyLR" type="CollisionShape2D" parent="." unique_id=1693696865]

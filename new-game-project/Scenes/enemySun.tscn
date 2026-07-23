@@ -2,7 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bomiila8jid2y" path="res://Scripts/enemySun.gd" id="1_p5ush"]
 [ext_resource type="Texture2D" uid="uid://gyjqcy6xnddf" path="res://Assets/SON.png" id="2_p5ush"]
+[ext_resource type="AudioStream" uid="uid://bvpkyx1p3fjnk" path="res://Assets/sound_effects/our sfx/sun/shurt.wav" id="4_f6u85"]
 [ext_resource type="AudioStream" uid="uid://b5y5j2t81dq1l" path="res://Assets/sound_effects/laserShoot.wav" id="4_s4l83"]
+[ext_resource type="AudioStream" uid="uid://ttbvs6qcncsg" path="res://Assets/sound_effects/our sfx/sun/sdie.wav" id="5_s4l83"]
+[ext_resource type="AudioStream" uid="uid://85ri8kc5dfg6" path="res://Assets/sound_effects/our sfx/sun/sSpawn.wav" id="6_4nohw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x1lq2"]
 radius = 32.01562
@@ -411,12 +414,15 @@ color = Color(0.682353, 0.12549, 0.0705882, 1)
 polygon = PackedVector2Array(-19.266, -22.592, 0, -5.64801, 19.266, -22.592, 25.6879, -16.944, 6.42199, 0, 25.6879, 16.944, 19.266, 22.592, 0, 5.64801, -19.266, 22.592, -25.6879, 16.944, -6.42199, 0, -25.6879, -16.944)
 
 [node name="HurtAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=882067346]
+stream = ExtResource("4_f6u85")
 bus = &"Sfx"
 
 [node name="DieAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=886493279]
+stream = ExtResource("5_s4l83")
 bus = &"Sfx"
 
 [node name="SpawnAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=294848598]
+stream = ExtResource("6_4nohw")
 bus = &"Sfx"
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]

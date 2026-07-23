@@ -1,11 +1,11 @@
 # LevelUpUI.gd
 extends CanvasLayer
 
-@onready var option_a: Button = $Control/Panel/VBoxContainer/HSplitContainer/OptionA
-@onready var option_b: Button = $Control/Panel/VBoxContainer/HSplitContainer/OptionB
-@onready var skip_button: Button = $Control/Panel/VBoxContainer/SkipButton
-@onready var desc_a: Label = $Control/Panel/VBoxContainer/HSplitContainer2/DescA
-@onready var desc_b: Label = $Control/Panel/VBoxContainer/HSplitContainer2/DescB
+@onready var option_a: Button = $"Control/Panel/VBoxContainer/HSplitContainer/OptionA"
+@onready var option_b: Button = $"Control/Panel/VBoxContainer/HSplitContainer/OptionB"
+@onready var skip_button: Button = $"Control/Panel/VBoxContainer/SkipButton"
+@onready var desc_a: Label = $"Control/Panel/VBoxContainer/HSplitContainer2/DescA"
+@onready var desc_b: Label = $"Control/Panel/VBoxContainer/HSplitContainer2/DescB"
 @export var upgrade_pool: Node
 
 var player: CharacterBody2D
@@ -20,13 +20,9 @@ func _ready():
 	skip_button.pressed.connect(_on_skip)
 
 func setup(p: CharacterBody2D):
+	print("LevelUpUI setup called with: ", p)   # TEMP
 	player = p
-	player.leveled_up.connect(_on_leveled_up)
-
-func _on_leveled_up(_new_level: int):
-	pending_levelups += 1
-	if not visible:
-		show_next_choice()
+	
 
 func show_next_choice():
 	var pool = upgrade_pool.get_pool()
@@ -43,8 +39,9 @@ func show_next_choice():
 
 func _on_choice(index: int):
 	var choice = current_choices[index]
+	print("player is: ", player)   # TEMP
 	choice["apply"].call(player)
-	player.shot_timer_reduction -= choice["time_cost"]  # more negative = costs more
+	player.shot_timer_reduction -= choice["time_cost"]
 	_close_and_advance()
 
 func _on_skip():
@@ -57,3 +54,9 @@ func _close_and_advance():
 	else:
 		get_tree().paused = false
 		hide()
+
+
+func _on_player_leveled_up(new_level: Variant) -> void:
+	pending_levelups += 1
+	if not visible:
+		show_next_choice()
