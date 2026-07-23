@@ -5,7 +5,7 @@ signal enemy_destroyed(enemy)
 @export var speed: float = 50.0
 @export var preferred_distance: float = 480.0   # ~15m if 1m = 32px, adjust to your scale
 @export var distance_tolerance: float = 40.0
-@export var shot_cooldown: float = 1.2
+@export var shot_cooldown: float = 2
 @export var time_gained_on_death: float = 5.0
 @export var spawn_invincible_time: float = 1.0 # NEW
 @export var flash_interval: float = 0.1 

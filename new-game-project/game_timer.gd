@@ -16,6 +16,8 @@ signal time_expired
 @export var wiggle_speed: float = 8.0
 @export var pop_scale_positive: float = 1.4
 @export var pop_scale_negative: float = 0.7
+@export var float_scale_min: float = 0.5 # Scale for 0.5 time change
+@export var float_scale_max: float = 1.5 # Scale for 10.0 time change
 
 var time_left: float
 var is_active: bool = false
@@ -27,7 +29,6 @@ var _wiggle_time: float = 0.0
 var _effect_tween: Tween
 
 func _ready() -> void:
-	# Register this node to a group so other scripts can find it via call_group
 	add_to_group(group_name)
 	
 	if not timer_label:
@@ -56,7 +57,6 @@ func _process(delta: float) -> void:
 	timer_label.text = "%.2f" % time_left
 	timer_label.pivot_offset = timer_label.size / 2.0
 
-	# Apply the wiggle to the child Label, keeping the root Control completely still
 	_wiggle_time += delta * wiggle_speed
 	timer_label.rotation_degrees = _base_rotation + (sin(_wiggle_time) * wiggle_intensity)
 
@@ -66,7 +66,6 @@ func start() -> void:
 func stop() -> void:
 	is_active = false
 
-# This is the function you will call from other nodes using call_group!
 func modify_time(amount: float) -> void:
 	time_left += amount
 	if time_left < 0.0: 
@@ -78,6 +77,8 @@ func modify_time(amount: float) -> void:
 
 func _play_pop_effect(is_positive: bool) -> void:
 	if _effect_tween and _effect_tween.is_valid():
+		if _effect_tween.is_running():
+			return
 		_effect_tween.kill()
 
 	_effect_tween = create_tween().set_parallel(true)
@@ -85,7 +86,6 @@ func _play_pop_effect(is_positive: bool) -> void:
 	var target_color: Color = Color.GREEN if is_positive else Color.RED
 	var target_scale: Vector2 = _base_scale * (pop_scale_positive if is_positive else pop_scale_negative)
 
-	# Target the timer_label for all visual tweaks
 	_effect_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SPRING)
 	_effect_tween.tween_property(timer_label, "scale", target_scale, 0.1)
 	_effect_tween.tween_property(timer_label, "modulate", target_color, 0.1)
@@ -106,10 +106,13 @@ func _spawn_floating_text(amount: float) -> void:
 	
 	if timer_label.has_theme_font_override("font"):
 		float_label.add_theme_font_override("font", timer_label.get_theme_font("font"))
-	float_label.add_theme_font_size_override("font_size", int(timer_label.get_theme_font_size("font_size") * 0.6))
+	float_label.add_theme_font_size_override("font_size", int(timer_label.get_theme_font_size("font_size") * 0.75))
 	
 	float_label.top_level = true 
-	add_child(float_label) # Add as a child of the Control
+	add_child(float_label) 
+	
+	# Set pivot to center so the text scales outward from its middle
+	float_label.pivot_offset = float_label.get_minimum_size() / 2.0
 	
 	var random_offset := Vector2(
 		randf_range(-timer_label.size.x * 0.8, timer_label.size.x * 0.8),
@@ -117,8 +120,32 @@ func _spawn_floating_text(amount: float) -> void:
 	)
 	float_label.global_position = timer_label.global_position + (timer_label.size / 2.0) + random_offset
 
+	var x_drift := randf_range(-60.0, 60.0)
+	var y_drift := randf_range(-40.0, -80.0)
+	var random_rot := randf_range(-0.4, 0.4)
+	
+	# NEW: Calculate target scale based on the absolute value of the change.
+	# We clamp the amount between 0.5 and 10.0, then map it to our min/max export values.
+	var abs_amount: float = abs(amount)
+	var dynamic_scale_multiplier: float = remap(clampf(abs_amount, 0.5, 10.0), 0.5, 10.0, float_scale_min, float_scale_max)
+	var target_scale := Vector2(dynamic_scale_multiplier, dynamic_scale_multiplier)
+	
+	# Start at 0 so it pops into existence
+	float_label.scale = Vector2.ZERO 
+
 	var float_tween := create_tween().set_parallel(true)
-	float_tween.tween_property(float_label, "global_position:y", float_label.global_position.y - 60.0, 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	
+	# 1. Pop in to our dynamically calculated target_scale!
+	float_tween.tween_property(float_label, "scale", target_scale, 0.3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	
+	# 2. Explode outward
+	float_tween.tween_property(float_label, "global_position:y", float_label.global_position.y + y_drift, 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	float_tween.tween_property(float_label, "global_position:x", float_label.global_position.x + x_drift, 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_LINEAR)
+	
+	# 3. Add dynamic rotation
+	float_tween.tween_property(float_label, "rotation", random_rot, 1.0).set_ease(Tween.EASE_OUT)
+
+	# 4. Fade out
 	float_tween.tween_property(float_label, "modulate:a", 0.0, 1.0).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
 	
 	float_tween.chain().tween_callback(float_label.queue_free)
