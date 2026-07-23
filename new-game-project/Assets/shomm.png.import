@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b1uvmj7ip3ef0"
-path="res://.godot/imported/shomm.png-69674429cba238576280687b07651cef.ctex"
+path="res://.godot/imported/shomm.png-04a82f2119800f2c1454a03827e2662c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/shomm.png"
-dest_files=["res://.godot/imported/shomm.png-69674429cba238576280687b07651cef.ctex"]
+source_file="res://Assets/shomm.png"
+dest_files=["res://.godot/imported/shomm.png-04a82f2119800f2c1454a03827e2662c.ctex"]
 
 [params]
 

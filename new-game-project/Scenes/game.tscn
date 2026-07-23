@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://cqpatfifsn3sg" path="res://Scenes/player.tscn" id="2_n47hv"]
 [ext_resource type="PackedScene" uid="uid://iqdtrxlra3lw" path="res://Scenes/game_timer.tscn" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://i6445kxw4vvt" path="res://Scripts/button.gd" id="4_lbhrr"]
-[ext_resource type="Script" uid="uid://khjp5ujfv3fh" path="res://Scenes/xp_bar.gd" id="4_wowpa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7nvpe"]
 size = Vector2(1024, 55.3125)
@@ -93,7 +92,6 @@ offset_left = -2.0
 offset_right = 2.0
 offset_bottom = 27.0
 grow_horizontal = 2
-script = ExtResource("4_wowpa")
 
 [node name="LevelLabel" type="Label" parent="UILayer/HUD/XPBar" unique_id=1075286613]
 layout_mode = 1
