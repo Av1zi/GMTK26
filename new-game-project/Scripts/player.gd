@@ -8,7 +8,7 @@ extends CharacterBody2D
 @export var current_xp: int = 0
 @export var base_xp_to_level: int = 100
 @export var xp_growth_rate: float = 1.25  # each level needs 25% more XP than the last
-
+@export var shot_timer_reduction = -0.5
 var screen_size
 var lr: bool = true
 var aim_pos: Vector2 = Vector2(0, 0)
@@ -114,6 +114,7 @@ func update_body_rotate(mouse_pos: Vector2):
 	aim_pos = dir_to_mouse.normalized()
 
 func shoot():
+	get_tree().call_group("game_timer", "modify_time", shot_timer_reduction)
 	body_rotete_player.play("Shot")
 	var bullet = bullet_scene.instantiate()
 	bullet.setup(bullet_spawn_pos.global_transform)
