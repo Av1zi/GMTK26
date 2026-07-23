@@ -15,6 +15,7 @@ var shake_strength: float = 0.0
 @onready var rand = RandomNumberGenerator.new()
 @onready var xp_bar: ProgressBar = $UILayer/HUD/XPBar
 @onready var level_label: Label = $UILayer/HUD/XPBar/LevelLabel
+var round_number: int = 0
 @onready var level_up_ui = $"Level up ui"
 
 func _ready():
@@ -29,16 +30,18 @@ func _ready():
 
 func _process(delta: float):
 	if enemy_list.size() == 0:
+		round_number += 1   # NEW — every wave increases difficulty
+		print("Spawning round: ", round_number)  
 		var n = randi_range(1, 3)
 		for i in range(0, n):
 			var enemy
-			if randf() < 0.5:  # 50/50 chance, tune as you like
+			if randf() < 0.5:
 				enemy = sun_enemy_class.instantiate()
 			else:
 				enemy = enemy_class.instantiate()
 			enemy.connect("enemy_destroyed", on_enemy_destroyed)
 			var pos = Vector2(randf_range(100, 1000), randf_range(150, 500))
-			enemy.setup(pos, player)
+			enemy.setup(pos, player, round_number)
 			get_tree().root.add_child(enemy)
 			enemy_list.append(enemy)
 	shake_camera(delta)

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c0s1svbt7pc2m"]
 
-[ext_resource type="Script" uid="uid://blfbir2bivph0" path="res://scenes/slash.gd" id="1_3c2nd"]
-[ext_resource type="AudioStream" uid="uid://dq05a2ska8t6s" path="res://assets/sound_effects/hitHurt.wav" id="2_fg1j7"]
+[ext_resource type="Script" uid="uid://blfbir2bivph0" path="res://Scripts/slash.gd" id="1_3c2nd"]
+[ext_resource type="AudioStream" uid="uid://dq05a2ska8t6s" path="res://Assets/sound_effects/hitHurt.wav" id="2_fg1j7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3d8s6"]
 size = Vector2(94, 206)
