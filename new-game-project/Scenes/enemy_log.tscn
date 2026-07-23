@@ -1,7 +1,14 @@
 [gd_scene format=3 uid="uid://bttvvdaxuprdg"]
 
 [ext_resource type="Script" uid="uid://byt2g68lko15e" path="res://Scripts/enemy.gd" id="1_s08bj"]
+[ext_resource type="AudioStream" uid="uid://bj6lio1eidvn7" path="res://Assets/sound_effects/our sfx/log/lhurt2.wav" id="2_j2ajw"]
 [ext_resource type="Texture2D" uid="uid://bhif7ff1xi8pe" path="res://Assets/LOG.png" id="2_s08bj"]
+[ext_resource type="AudioStream" uid="uid://bt56d6v6blhfy" path="res://Assets/sound_effects/our sfx/log/lhurt.wav" id="3_dj4lg"]
+[ext_resource type="AudioStream" uid="uid://cbnjmxqfcom10" path="res://Assets/sound_effects/our sfx/log/lspawn.wav" id="4_wq0m2"]
+[ext_resource type="AudioStream" uid="uid://bfh8n3dfrdtdg" path="res://Assets/sound_effects/our sfx/log/ldie2.wav" id="5_8mq2q"]
+[ext_resource type="AudioStream" uid="uid://06iwuo2ygi63" path="res://Assets/sound_effects/our sfx/log/ldie.wav" id="6_xqgw0"]
+[ext_resource type="AudioStream" uid="uid://dwr4yodnfy38y" path="res://Assets/sound_effects/our sfx/log/lhit1.wav" id="7_rflh2"]
+[ext_resource type="AudioStream" uid="uid://bxe77epgcvjwj" path="res://Assets/sound_effects/our sfx/log/lhit2.wav" id="8_mtm3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3agpq"]
 size = Vector2(61, 68)
@@ -317,6 +324,10 @@ min_scale = 0.8
 max_scale = 5.0
 attack_cooldown = 2.0
 spawn_invincible_time = 1.2
+hurt_sounds = Array[AudioStream]([ExtResource("2_j2ajw"), ExtResource("3_dj4lg")])
+spawn_sounds = Array[AudioStream]([ExtResource("4_wq0m2")])
+die_sounds = Array[AudioStream]([ExtResource("5_8mq2q"), ExtResource("6_xqgw0")])
+hit_sounds = Array[AudioStream]([ExtResource("7_rflh2"), ExtResource("8_mtm3j")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=821535364]
 light_mask = 3
@@ -372,6 +383,18 @@ position = Vector2(-3, 3)
 shape = SubResource("CapsuleShape2D_edmbg")
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=37126461]
+
+[node name="HurtAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=1151267127]
+bus = &"Sfx"
+
+[node name="DieAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=56089344]
+bus = &"Sfx"
+
+[node name="HitAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=1134105114]
+bus = &"Sfx"
+
+[node name="SpawnAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=609532858]
+bus = &"Sfx"
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

@@ -12,6 +12,7 @@ extends CharacterBody2D
 @export var shot_cooldown: float = 0.5
 @export var melee_cooldown: float = 1.2
 @export var bullet_damage: float = 30
+@export var hurt_sounds: Array[AudioStream] = []   # drag your 3 hurt sfx into this array in the Inspector
 var screen_size
 var lr: bool = true
 var aim_pos: Vector2 = Vector2(0, 0)
@@ -35,6 +36,9 @@ var push_timer: float = 0.0
 @onready var body_lr_collider: CollisionShape2D = $CollisionBodyLR
 @onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var iframe_timer: Timer = $IFrameTimer 
+@onready var hurt_audio_player: AudioStreamPlayer = $HurtAudioPlayer
+@onready var die_audio_player: AudioStreamPlayer = $DieAudioPlayer
+@onready var levelup_audio_player: AudioStreamPlayer = $LevelUpAudioPlayer
 var invincible: bool = false
 
 signal xp_changed(current_xp, xp_to_next_level)
@@ -51,6 +55,7 @@ func add_xp(amount: int):
 		level += 1
 		needed = get_xp_to_next_level()
 		leveled_up.emit(level)
+		play_random_pitch(levelup_audio_player, 0.95, 1.05)
 	xp_changed.emit(current_xp, needed)
 
 func _ready():
@@ -156,6 +161,8 @@ func get_hit(time: int, attacker_trans: Transform2D): # NEW
 	audio_player.play()
 	get_tree().call_group("game_timer", "modify_time", time)
 	start_iframes() 
+	hurt_audio_player.stream = hurt_sounds[randi() % hurt_sounds.size()]
+	play_random_pitch(hurt_audio_player)
 	
 func start_iframes():
 	invincible = true
@@ -171,3 +178,7 @@ func flash_sprite():
 func _on_i_frame_timer_timeout(): # NEW — connect to IFrameTimer's timeout
 	invincible = false
 	body_lr.modulate.a = 1.0 # Ensu
+
+func play_random_pitch(player: AudioStreamPlayer, min_pitch: float = 0.9, max_pitch: float = 1.1):
+	player.pitch_scale = randf_range(min_pitch, max_pitch)
+	player.play()

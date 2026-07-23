@@ -41,6 +41,13 @@ var is_shot_cd: bool = false
 @onready var bullet_spawn_pos: Node2D = $BulletSpawnPoint
 @onready var shot_timer: Timer = $ShotTimer
 @onready var screen_size = Vector2.ZERO
+@onready var spawn_audio_player: AudioStreamPlayer = $SpawnAudioPlayer
+@onready var hurt_audio_player: AudioStreamPlayer = $HurtAudioPlayer
+@onready var die_audio_player: AudioStreamPlayer = $DieAudioPlayer
+
+func play_random_pitch(player: AudioStreamPlayer, min_pitch: float = 0.9, max_pitch: float = 1.1):
+	player.pitch_scale = randf_range(min_pitch, max_pitch)
+	player.play()
 
 func _ready():
 	play_spawn_invincibility()
@@ -48,6 +55,7 @@ func _ready():
 	shot_timer.one_shot = true
 	shot_timer.timeout.connect(_on_shot_timer_timeout)
 	screen_size = get_viewport_rect().size
+	play_random_pitch(spawn_audio_player)
 
 func setup(pos: Vector2, _player: CharacterBody2D, round_number: int = 1):
 	position = pos
@@ -107,6 +115,7 @@ func shoot():
 	get_tree().root.add_child(bullet)
 
 func get_hit(damage: int, bullet_trans: Transform2D):
+	play_random_pitch(hurt_audio_player)
 	health -= damage
 	damage_text.text = str(damage)
 	damage_text.visible = true
@@ -122,8 +131,14 @@ func get_hit(damage: int, bullet_trans: Transform2D):
 	set_push(Vector2.RIGHT.rotated(bullet_trans.get_rotation()), 150.0, 0.1)
 
 func destroy():
+	set_physics_process(false)
+	play_random_pitch(die_audio_player)
 	get_tree().call_group("game_timer", "modify_time", time_gained_on_death)
 	enemy_destroyed.emit(self, xp_reward)
+	collision_layer = 0   # NEW — bullets can no longer detect this body
+	collision_mask = 0    # NEW — this body no longer detects anything either
+	visible = false
+	await die_audio_player.finished
 	queue_free()
 
 func set_push(dir: Vector2, strength: float, timer: float):

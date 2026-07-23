@@ -43,9 +43,24 @@ var original_collision_mask: int = 2
 @onready var attack_timer: Timer = $AttackTimer
 @onready var character_sprite = $CharacterSprite
 
+@onready var hurt_audio_player: AudioStreamPlayer = $HurtAudioPlayer
+@onready var spawn_audio_player: AudioStreamPlayer = $SpawnAudioPlayer
+@onready var hit_audio_player: AudioStreamPlayer = $HitAudioPlayer
+@onready var die_audio_player: AudioStreamPlayer = $DieAudioPlayer
+@export var hurt_sounds: Array[AudioStream] = []
+@export var spawn_sounds: Array[AudioStream] = []
+@export var die_sounds: Array[AudioStream] = []
+@export var hit_sounds: Array[AudioStream] = []
+
+func play_random_pitch(player: AudioStreamPlayer, min_pitch: float = 0.9, max_pitch: float = 1.1):
+	player.pitch_scale = randf_range(min_pitch, max_pitch)
+	player.play()
+
 func _ready():
 	play_spawn_invincibility()
 	damage_text.visible = false
+	spawn_audio_player.stream = spawn_sounds[randi() % spawn_sounds.size()]
+	play_random_pitch(spawn_audio_player)
 
 func setup(pos: Vector2, _player: CharacterBody2D, round_number: int = 1):
 	position = pos
@@ -75,6 +90,8 @@ func _physics_process(delta):
 		attack_player()
 
 func attack_player():
+	hit_audio_player.stream = hit_sounds[randi() % hit_sounds.size()]
+	play_random_pitch(hit_audio_player)
 	can_attack = false
 	attack_timer.start(attack_cooldown)
 	player.get_hit(attack_damage, global_transform)
@@ -95,12 +112,11 @@ func get_hit(damage: int, bullet_trans: Transform2D):
 	damage_text.text = str(damage)
 	damage_text.visible = true
 	animation_tree['parameters/get_damage/OneShot/request'] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
-
-	update_visual_size()   # NEW — check size/death BEFORE deciding is_destroyed
-
-	if scale.x <= min_scale + 0.01 or health <= 0:   # CHANGED — epsilon + health fallback
+	hurt_audio_player.stream = hurt_sounds[randi() % hurt_sounds.size()]
+	play_random_pitch(hurt_audio_player)   # NEW
+	update_visual_size()
+	if scale.x <= min_scale + 0.01 or health <= 0:
 		animation_tree['parameters/conditions/is_destroyed'] = true
-
 	var bleeding_effect = blood_particle.instantiate()
 	get_tree().root.add_child(bleeding_effect)
 	bleeding_effect.setup(bullet_trans)
@@ -115,8 +131,14 @@ func update_visual_size():
 
 
 func destroy():
+	set_physics_process(false)
+	play_random_pitch(die_audio_player)
 	get_tree().call_group("game_timer", "modify_time", time_gained_on_death)
 	enemy_destroyed.emit(self, xp_reward)
+	collision_layer = 0   # NEW — bullets can no longer detect this body
+	collision_mask = 0    # NEW — this body no longer detects anything either
+	visible = false
+	await die_audio_player.finished
 	queue_free()
 
 func set_push(dir: Vector2, strength: float, timer: float):

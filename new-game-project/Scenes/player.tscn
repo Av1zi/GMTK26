@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://cqpatfifsn3sg"]
 
 [ext_resource type="Script" uid="uid://clds3vvemuedu" path="res://Scripts/player.gd" id="1_sy1wy"]
+[ext_resource type="AudioStream" uid="uid://byg3xv45sc305" path="res://Assets/sound_effects/our sfx/player/hurt2.wav" id="2_f1ek2"]
 [ext_resource type="AudioStream" uid="uid://b5y5j2t81dq1l" path="res://Assets/sound_effects/laserShoot.wav" id="2_qiobg"]
 [ext_resource type="Texture2D" uid="uid://d3angyo2ditf0" path="res://Assets/vampire.png" id="2_vgqql"]
+[ext_resource type="AudioStream" uid="uid://dl5q2t7pqmplm" path="res://Assets/sound_effects/our sfx/player/hurt3.wav" id="3_tx1dd"]
 [ext_resource type="Texture2D" uid="uid://f3bwhpxp5r1t" path="res://Assets/GUN.png" id="3_vgqql"]
+[ext_resource type="AudioStream" uid="uid://c7nx1rrnajqen" path="res://Assets/sound_effects/our sfx/player/hurt.wav" id="4_gymyn"]
+[ext_resource type="AudioStream" uid="uid://cpi20gbeqr7qn" path="res://Assets/sound_effects/our sfx/player/die.wav" id="8_pu2lt"]
+[ext_resource type="AudioStream" uid="uid://dcs6y3gf5i8s3" path="res://Assets/sound_effects/our sfx/player/level up.wav" id="9_ukyrk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x1lq2"]
 radius = 32.01562
@@ -140,6 +145,7 @@ _data = {
 scale = Vector2(-1, 1)
 motion_mode = 1
 script = ExtResource("1_sy1wy")
+hurt_sounds = Array[AudioStream]([ExtResource("2_f1ek2"), ExtResource("3_tx1dd"), ExtResource("4_gymyn")])
 
 [node name="CollisionBodyLR" type="CollisionShape2D" parent="." unique_id=1693696865]
 rotation = 0.010237323
@@ -194,6 +200,18 @@ stream = ExtResource("2_qiobg")
 volume_db = -12.0
 
 [node name="IFrameTimer" type="Timer" parent="." unique_id=1074545410]
+
+[node name="HurtAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=1866512725]
+stream = ExtResource("4_gymyn")
+bus = &"Sfx"
+
+[node name="DieAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=1983203055]
+stream = ExtResource("8_pu2lt")
+bus = &"Sfx"
+
+[node name="LevelUpAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=1150547881]
+stream = ExtResource("9_ukyrk")
+bus = &"Sfx"
 
 [connection signal="timeout" from="ShotTimer" to="." method="_on_shot_timer_timeout"]
 [connection signal="timeout" from="MeleeTimer" to="." method="_on_melee_timer_timeout"]
