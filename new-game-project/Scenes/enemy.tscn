@@ -34,7 +34,7 @@ animation = &"one_move"
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_1f0kj"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ofapa"]
-graph_offset = Vector2(-116.55747, 134.07742)
+graph_offset = Vector2(-151.925, 115.01583)
 nodes/output/position = Vector2(464, 240)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_1bul0")
 "nodes/Animation 2/position" = Vector2(-16, 352)
@@ -335,7 +335,7 @@ parameters/conditions/is_destroyed = false
 parameters/destroy/Add2/add_amount = 1.0
 parameters/get_damage/OneShot/active = false
 parameters/get_damage/OneShot/internal_active = false
-parameters/get_damage/OneShot/request = 0
+parameters/get_damage/OneShot/request = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1151520246]
 libraries/ = SubResource("AnimationLibrary_afpow")

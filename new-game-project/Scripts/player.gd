@@ -4,6 +4,11 @@ extends CharacterBody2D
 @export var rotate_flag: bool = true
 @export var melee_range: float = 20.0 # Distance in front of the player to spawn the slash
 @export var iframe_duration: float = 0.8
+@export var level: int = 1
+@export var current_xp: int = 0
+@export var base_xp_to_level: int = 100
+@export var xp_growth_rate: float = 1.25  # each level needs 25% more XP than the last
+
 var screen_size
 var lr: bool = true
 var aim_pos: Vector2 = Vector2(0, 0)
@@ -29,9 +34,26 @@ var push_timer: float = 0.0
 @onready var iframe_timer: Timer = $IFrameTimer 
 var invincible: bool = false
 
+signal xp_changed(current_xp, xp_to_next_level)
+signal leveled_up(new_level)
+
+func get_xp_to_next_level() -> int:
+	return int(base_xp_to_level * pow(xp_growth_rate, level - 1))
+
+func add_xp(amount: int):
+	current_xp += amount
+	var needed = get_xp_to_next_level()
+	while current_xp >= needed:
+		current_xp -= needed
+		level += 1
+		needed = get_xp_to_next_level()
+		leveled_up.emit(level)
+	xp_changed.emit(current_xp, needed)
+
 func _ready():
 	screen_size = get_viewport_rect().size
 	hide()
+	#xp_changed.emit(current_xp, get_xp_to_next_level())
 
 func _physics_process(delta):
 	velocity = Vector2.ZERO

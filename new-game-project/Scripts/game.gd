@@ -13,11 +13,14 @@ var shake_strength: float = 0.0
 @onready var player: CharacterBody2D = $Player
 @onready var noise = FastNoiseLite.new()
 @onready var rand = RandomNumberGenerator.new()
+@onready var xp_bar: ProgressBar = $UILayer/HUD/XPBar
+@onready var level_label: Label = $UILayer/HUD/XPBar/LevelLabel
 
 func _ready():
 	var screen_size = get_viewport_rect().size
 	start_pos = Vector2(screen_size.x/2, screen_size.y/2)
 	player.setup(start_pos)
+	player.xp_changed.emit(player.current_xp, player.get_xp_to_next_level())  # NEW — init bar safely
 	rand.randomize()
 	noise.seed = rand.randi()
 	noise.frequency = 0.1
@@ -61,9 +64,10 @@ func get_random_offset() -> Vector2:
 		rand.randf_range(-shake_strength, shake_strength)
 	)
 
-func on_enemy_destroyed(enemy):
+func on_enemy_destroyed(enemy, xp_reward):
 	shake_strength = noise_shake_strength
 	enemy_list.erase(enemy)
+	player.add_xp(xp_reward)
 
 
 func _on_game_timer_time_expired():
@@ -75,3 +79,11 @@ func _on_game_timer_time_expired():
 func _on_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn") # main menu button
 		
+
+
+func _on_player_leveled_up(new_level: Variant) -> void:
+	level_label.text = "Level %d" % new_level
+
+func _on_player_xp_changed(current_xp: Variant, xp_to_next_level: Variant) -> void:
+	xp_bar.max_value = xp_to_next_level
+	xp_bar.value = current_xp

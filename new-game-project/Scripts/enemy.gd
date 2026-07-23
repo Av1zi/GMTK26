@@ -1,10 +1,11 @@
 extends CharacterBody2D
-signal enemy_destroyed(enemy)
+signal enemy_destroyed(enemy, xp_reward)
 @export var health: int = 100
 @export var speed: float = 50.0
 @export var time_gained_on_death: float = 5.0
 @export var attack_damage: int = 10 # NEW
 @export var attack_cooldown: float = 1.0 # NEW — seconds between hits while player is in range
+@export var xp_reward: int = 10
 var player: CharacterBody2D
 var push_dir: Vector2 = Vector2(0, 0)
 var push_strength: float = 0.0
@@ -62,7 +63,7 @@ func get_hit(damage: int, bullet_trans: Transform2D):
 	
 func destroy():
 	get_tree().call_group("game_timer", "modify_time", time_gained_on_death)
-	enemy_destroyed.emit(self)
+	enemy_destroyed.emit(self, xp_reward)
 	queue_free()
 
 func set_push(dir: Vector2, strength: float, timer: float):
