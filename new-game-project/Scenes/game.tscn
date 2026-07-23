@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://bduw5gb057ino"]
 
-[ext_resource type="Script" uid="uid://6fsf3wirayay" path="res://scripts/game.gd" id="1_5vnjt"]
-[ext_resource type="PackedScene" uid="uid://cqpatfifsn3sg" path="res://scenes/player.tscn" id="2_n47hv"]
-[ext_resource type="PackedScene" uid="uid://iqdtrxlra3lw" path="res://scenes/game_timer.tscn" id="3_lnu2h"]
-[ext_resource type="Script" uid="uid://i6445kxw4vvt" path="res://scripts/button.gd" id="4_lbhrr"]
-[ext_resource type="Theme" uid="uid://dg40rt6poq8uy" path="res://THEME.tres" id="4_u5sy4"]
-[ext_resource type="Script" uid="uid://cmmnukdk4yffy" path="res://scenes/LevelUpUI.gd" id="6_u5sy4"]
-[ext_resource type="Script" uid="uid://behrtqn3jlawx" path="res://scripts/UpgradePool.gd" id="7_gee14"]
+[ext_resource type="Script" uid="uid://6fsf3wirayay" path="res://Scripts/game.gd" id="1_5vnjt"]
+[ext_resource type="PackedScene" uid="uid://cqpatfifsn3sg" path="res://Scenes/player.tscn" id="2_n47hv"]
+[ext_resource type="PackedScene" uid="uid://iqdtrxlra3lw" path="res://Scenes/game_timer.tscn" id="3_lnu2h"]
+[ext_resource type="Script" uid="uid://i6445kxw4vvt" path="res://Scripts/button.gd" id="4_lbhrr"]
+[ext_resource type="Script" uid="uid://cmmnukdk4yffy" path="res://Scripts/LevelUpUI.gd" id="6_u5sy4"]
+[ext_resource type="Script" uid="uid://behrtqn3jlawx" path="res://Scripts/UpgradePool.gd" id="7_gee14"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7nvpe"]
 size = Vector2(1024, 55.3125)
@@ -88,24 +87,24 @@ grow_vertical = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
-anchor_top = 0.933
+anchor_top = 0.25
 anchor_right = 0.8
-anchor_bottom = 0.955
-offset_top = -4.0
+anchor_bottom = 0.25
+offset_left = -2.0
+offset_right = 2.0
+offset_bottom = 27.0
 grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("4_u5sy4")
-show_percentage = false
 
 [node name="LevelLabel" type="Label" parent="UILayer/HUD/XPBar" unique_id=1075286613]
 layout_mode = 1
-offset_top = -37.584045
-offset_right = 185.99997
-offset_bottom = 2.4159546
-theme = ExtResource("4_u5sy4")
-theme_override_font_sizes/font_size = 22
-text = "Level 1"
-vertical_alignment = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -94.0
+offset_top = -20.0
+offset_right = 91.99997
+offset_bottom = 23.0
+grow_horizontal = 2
 
 [node name="Death Screen" type="Control" parent="UILayer/HUD" unique_id=1611158158]
 process_mode = 3
@@ -157,7 +156,6 @@ script = ExtResource("4_lbhrr")
 script = ExtResource("7_gee14")
 
 [node name="Level up ui" type="CanvasLayer" parent="." unique_id=1964463532 node_paths=PackedStringArray("upgrade_pool")]
-visible = false
 script = ExtResource("6_u5sy4")
 upgrade_pool = NodePath("../Upgrade pool")
 
