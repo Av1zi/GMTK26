@@ -212,6 +212,9 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_trim_flags = 128
 
 [node name="HSplitContainer" type="HSplitContainer" parent="Level up ui/Control/Panel/VBoxContainer" unique_id=219283558]
 layout_mode = 2

@@ -15,7 +15,7 @@ var shake_strength: float = 0.0
 @onready var rand = RandomNumberGenerator.new()
 @onready var xp_bar: ProgressBar = $UILayer/HUD/XPBar
 @onready var level_label: Label = $UILayer/HUD/XPBar/LevelLabel
-@onready var level_up_ui = $LevelUpUI
+@onready var level_up_ui = $"Level up ui"
 
 func _ready():
 	level_up_ui.setup(player)
