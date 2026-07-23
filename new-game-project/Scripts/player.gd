@@ -9,6 +9,8 @@ extends CharacterBody2D
 @export var base_xp_to_level: int = 100
 @export var xp_growth_rate: float = 1.25  # each level needs 25% more XP than the last
 @export var shot_timer_reduction = -0.5
+@export var shot_cooldown: float = 0.5
+@export var melee_cooldown: float = 1.2
 var screen_size
 var lr: bool = true
 var aim_pos: Vector2 = Vector2(0, 0)
@@ -70,13 +72,13 @@ func _physics_process(delta):
 	if Input.is_action_pressed("shot") and not is_shot_cd:
 		shoot()
 		is_shot_cd = true
-		shot_timer.start(0.2)
+		shot_timer.start(shot_cooldown)
 
 	# Melee input — NEW
 	if Input.is_action_pressed("melee") and not is_melee_cd:
 		melee()
 		is_melee_cd = true
-		melee_timer.start(0.4) # Slash cooldown, feel free to tune
+		melee_timer.start(melee_cooldown) # Slash cooldown, feel free to tune
 
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed

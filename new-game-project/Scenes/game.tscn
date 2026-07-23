@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://bduw5gb057ino"]
 
-[ext_resource type="Script" uid="uid://6fsf3wirayay" path="res://Scripts/game.gd" id="1_5vnjt"]
-[ext_resource type="PackedScene" uid="uid://cqpatfifsn3sg" path="res://Scenes/player.tscn" id="2_n47hv"]
-[ext_resource type="PackedScene" uid="uid://iqdtrxlra3lw" path="res://Scenes/game_timer.tscn" id="3_lnu2h"]
-[ext_resource type="Script" uid="uid://i6445kxw4vvt" path="res://Scripts/button.gd" id="4_lbhrr"]
-[ext_resource type="Script" uid="uid://khjp5ujfv3fh" path="res://Scenes/xp_bar.gd" id="4_wowpa"]
+[ext_resource type="Script" uid="uid://6fsf3wirayay" path="res://scripts/game.gd" id="1_5vnjt"]
+[ext_resource type="PackedScene" uid="uid://cqpatfifsn3sg" path="res://scenes/player.tscn" id="2_n47hv"]
+[ext_resource type="PackedScene" uid="uid://iqdtrxlra3lw" path="res://scenes/game_timer.tscn" id="3_lnu2h"]
+[ext_resource type="Script" uid="uid://i6445kxw4vvt" path="res://scripts/button.gd" id="4_lbhrr"]
+[ext_resource type="Script" uid="uid://khjp5ujfv3fh" path="res://scenes/xp_bar.gd" id="4_wowpa"]
+[ext_resource type="Script" uid="uid://cmmnukdk4yffy" path="res://scenes/LevelUpUI.gd" id="6_u5sy4"]
+[ext_resource type="Script" uid="uid://behrtqn3jlawx" path="res://scripts/UpgradePool.gd" id="7_gee14"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7nvpe"]
 size = Vector2(1024, 55.3125)
@@ -151,6 +153,84 @@ offset_right = 727.0
 offset_bottom = 341.0
 text = "Menu"
 script = ExtResource("4_lbhrr")
+
+[node name="Upgrade pool" type="Node" parent="." unique_id=32721165]
+script = ExtResource("7_gee14")
+
+[node name="Level up ui" type="CanvasLayer" parent="." unique_id=1964463532 node_paths=PackedStringArray("upgrade_pool")]
+script = ExtResource("6_u5sy4")
+upgrade_pool = NodePath("../Upgrade pool")
+
+[node name="Control" type="Control" parent="Level up ui" unique_id=2108172506]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Level up ui/Control" unique_id=797198885]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -314.0
+offset_top = -215.0
+offset_right = 314.0
+offset_bottom = 215.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Level up ui/Control/Panel" unique_id=174928625]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 53.0
+offset_right = -28.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 21
+alignment = 1
+
+[node name="HSplitContainer2" type="HSplitContainer" parent="Level up ui/Control/Panel/VBoxContainer" unique_id=889043212]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DescA" type="Label" parent="Level up ui/Control/Panel/VBoxContainer/HSplitContainer2" unique_id=1365851295]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescB" type="Label" parent="Level up ui/Control/Panel/VBoxContainer/HSplitContainer2" unique_id=976748854]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Level up ui/Control/Panel/VBoxContainer" unique_id=219283558]
+layout_mode = 2
+
+[node name="OptionA" type="Button" parent="Level up ui/Control/Panel/VBoxContainer/HSplitContainer" unique_id=911658353]
+custom_maximum_size = Vector2(-1, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "PICK"
+
+[node name="OptionB" type="Button" parent="Level up ui/Control/Panel/VBoxContainer/HSplitContainer" unique_id=1871675037]
+custom_maximum_size = Vector2(-1, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "PICK "
+
+[node name="SkipButton" type="Button" parent="Level up ui/Control/Panel/VBoxContainer" unique_id=2042738032]
+layout_mode = 2
+text = "SKIP"
 
 [connection signal="leveled_up" from="Player" to="." method="_on_player_leveled_up"]
 [connection signal="xp_changed" from="Player" to="." method="_on_player_xp_changed"]
