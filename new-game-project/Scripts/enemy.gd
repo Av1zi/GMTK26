@@ -111,7 +111,9 @@ func update_visual_size():
 	# Map health percent directly onto the scale range [min_scale, size_scale]
 	var current_scale = lerp(min_scale, size_scale, health_percent)
 	scale = Vector2(current_scale, current_scale)
-	
+	print("health: ", health, " / ", max_health, " scale: ", current_scale, " min_scale: ", min_scale)  # TEMP
+
+
 func destroy():
 	get_tree().call_group("game_timer", "modify_time", time_gained_on_death)
 	enemy_destroyed.emit(self, xp_reward)
