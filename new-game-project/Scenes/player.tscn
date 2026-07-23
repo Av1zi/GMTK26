@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cqpatfifsn3sg"]
 
-[ext_resource type="Script" uid="uid://clds3vvemuedu" path="res://scripts/player.gd" id="1_sy1wy"]
-[ext_resource type="AudioStream" uid="uid://b5y5j2t81dq1l" path="res://assets/sound_effects/laserShoot.wav" id="2_qiobg"]
-[ext_resource type="Texture2D" uid="uid://d3angyo2ditf0" path="res://assets/vampire.png" id="2_vgqql"]
-[ext_resource type="Texture2D" uid="uid://f3bwhpxp5r1t" path="res://assets/gun.png" id="3_vgqql"]
+[ext_resource type="Script" uid="uid://clds3vvemuedu" path="res://Scripts/player.gd" id="1_sy1wy"]
+[ext_resource type="AudioStream" uid="uid://b5y5j2t81dq1l" path="res://Assets/sound_effects/laserShoot.wav" id="2_qiobg"]
+[ext_resource type="Texture2D" uid="uid://d3angyo2ditf0" path="res://Assets/vampire.png" id="2_vgqql"]
+[ext_resource type="Texture2D" uid="uid://f3bwhpxp5r1t" path="res://Assets/GUN.png" id="3_vgqql"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x1lq2"]
 radius = 32.01562

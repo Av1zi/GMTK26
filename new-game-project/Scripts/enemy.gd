@@ -27,7 +27,6 @@ func _physics_process(delta):
 	var dir = (player.global_position - global_position).normalized()
 	position += dir * delta * speed
 	push_back(delta)
-	
 
 	if player_in_range and can_attack:
 		attack_player()
@@ -51,14 +50,15 @@ func _on_attack_timer_timeout():
 func get_hit(damage: int, bullet_trans: Transform2D):
 	health -= damage
 	damage_text.text = str(damage)
-	animation_tree['parameters/conditions/is_damaged'] = true
+	damage_text.visible = true
+	animation_tree['parameters/get_damage/OneShot/request'] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 	if health <= 0:
 		animation_tree['parameters/conditions/is_destroyed'] = true
 	var bleeding_effect = blood_particle.instantiate()
 	get_tree().root.add_child(bleeding_effect)
 	bleeding_effect.setup(bullet_trans)
 	set_push(Vector2.RIGHT.rotated(bullet_trans.get_rotation()), 150.0, 0.1)
-
+	
 func destroy():
 	enemy_destroyed.emit(self)
 	queue_free()
@@ -77,7 +77,7 @@ func push_back(delta: float):
 
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name == "get_damage":
-		animation_tree['parameters/conditions/is_damaged'] = false
+		damage_text.visible = false
 	elif anim_name == "destroy":
 		animation_tree['parameters/conditions/is_destroyed'] = false
 		destroy()

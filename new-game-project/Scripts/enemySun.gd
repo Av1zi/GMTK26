@@ -26,6 +26,7 @@ var is_shot_cd: bool = false
 func _ready():
 	damage_text.visible = false
 	shot_timer.one_shot = true
+	shot_timer.timeout.connect(_on_shot_timer_timeout)
 	screen_size = get_viewport_rect().size
 
 func setup(pos: Vector2, _player: CharacterBody2D):

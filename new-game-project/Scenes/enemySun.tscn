@@ -53,7 +53,7 @@ animation = &"destroy"
 animation = &"get_damage"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_c8cx6"]
-graph_offset = Vector2(-573.451, 67.8821)
+graph_offset = Vector2(-102.25098, 53.482105)
 nodes/output/position = Vector2(440, 180)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_nupch")
 nodes/Add2/position = Vector2(280, 120)
@@ -63,7 +63,7 @@ nodes/Animation/position = Vector2(100, 120)
 "nodes/Animation 2/position" = Vector2(100, 260)
 node_connections = [&"output", 0, &"Add2", &"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2"]
 
-[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_mt0cv"]
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_p5ush"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1bul0"]
 animation = &"get_damage"
@@ -72,15 +72,15 @@ animation = &"get_damage"
 animation = &"one_move"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ofapa"]
-graph_offset = Vector2(-411, 187)
-nodes/output/position = Vector2(440, 180)
-nodes/Add2/node = SubResource("AnimationNodeAdd2_mt0cv")
-nodes/Add2/position = Vector2(260, 160)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_42jkq")
-nodes/Animation/position = Vector2(60, 300)
+graph_offset = Vector2(-124.14546, 99.031395)
+nodes/output/position = Vector2(464, 240)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_1bul0")
-"nodes/Animation 2/position" = Vector2(60, 160)
-node_connections = [&"output", 0, &"Animation 2", &"Add2", 1, &"Animation"]
+"nodes/Animation 2/position" = Vector2(-16, 352)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_42jkq")
+nodes/Animation/position = Vector2(32, 160)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_p5ush")
+nodes/Add2/position = Vector2(208, 208)
+node_connections = [&"output", 0, &"Add2", &"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_djaov"]
 animation = &"move"
@@ -120,7 +120,7 @@ states/get_damage/position = Vector2(330, 3)
 states/move/node = SubResource("AnimationNodeAnimation_djaov")
 states/move/position = Vector2(330, 99.68)
 transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition_rftbb"), "move", "get_damage", SubResource("AnimationNodeStateMachineTransition_h5v5d"), "get_damage", "move", SubResource("AnimationNodeStateMachineTransition_l6ne3"), "move", "destroy", SubResource("AnimationNodeStateMachineTransition_juc1o"), "destroy", "move", SubResource("AnimationNodeStateMachineTransition_nnt1o")]
-graph_offset = Vector2(-100, 58)
+graph_offset = Vector2(-105, -24)
 
 [sub_resource type="Animation" id="Animation_cy6mt"]
 length = 0.46666667
@@ -378,7 +378,7 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/is_damaged = false
 parameters/conditions/is_destroyed = false
 parameters/destroy/Add2/add_amount = 1.0
-parameters/get_damage/Add2/add_amount = 1.0
+parameters/get_damage/Add2/add_amount = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=911589452]
 libraries/ = SubResource("AnimationLibrary_ndto6")

@@ -8,8 +8,8 @@
 size = Vector2(18, 16)
 
 [node name="Bullet" type="Area2D" unique_id=31809075 groups=["bullet"]]
-collision_mask = 0
 script = ExtResource("1_761jw")
+damage = -5
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1092317484]
 scale = Vector2(0.4, 0.4)
