@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://bdul5xkhnycti"]
 
-[ext_resource type="Script" uid="uid://byt2g68lko15e" path="res://Scripts/enemy.gd" id="1_cd24m"]
-[ext_resource type="AudioStream" uid="uid://c8eqqsyo0g8al" path="res://Assets/sound_effects/our sfx/garlic/ghurt1.wav" id="2_1dp5w"]
-[ext_resource type="Texture2D" uid="uid://b1uvmj7ip3ef0" path="res://Assets/shomm.png" id="2_1f0kj"]
-[ext_resource type="AudioStream" uid="uid://b3uxtq21pfwda" path="res://Assets/sound_effects/our sfx/garlic/ghurt2.wav" id="3_auwsv"]
-[ext_resource type="AudioStream" uid="uid://de3noa78pcams" path="res://Assets/sound_effects/our sfx/garlic/garlic spawn.wav" id="4_8uf12"]
-[ext_resource type="AudioStream" uid="uid://cqrkc2hcx23kp" path="res://Assets/sound_effects/our sfx/garlic/gdie.wav" id="5_po0sg"]
-[ext_resource type="AudioStream" uid="uid://c1n22oxu56fw5" path="res://Assets/sound_effects/our sfx/garlic/ghit.wav" id="6_haro7"]
+[ext_resource type="Script" uid="uid://byt2g68lko15e" path="res://scripts/enemy.gd" id="1_cd24m"]
+[ext_resource type="AudioStream" uid="uid://c8eqqsyo0g8al" path="res://assets/sound_effects/our sfx/garlic/ghurt1.wav" id="2_1dp5w"]
+[ext_resource type="Texture2D" uid="uid://b1uvmj7ip3ef0" path="res://assets/shomm.png" id="2_1f0kj"]
+[ext_resource type="AudioStream" uid="uid://b3uxtq21pfwda" path="res://assets/sound_effects/our sfx/garlic/ghurt2.wav" id="3_auwsv"]
+[ext_resource type="AudioStream" uid="uid://de3noa78pcams" path="res://assets/sound_effects/our sfx/garlic/garlic spawn.wav" id="4_8uf12"]
+[ext_resource type="AudioStream" uid="uid://cqrkc2hcx23kp" path="res://assets/sound_effects/our sfx/garlic/gdie.wav" id="5_po0sg"]
+[ext_resource type="AudioStream" uid="uid://c1n22oxu56fw5" path="res://assets/sound_effects/our sfx/garlic/ghit.wav" id="6_haro7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3agpq"]
 size = Vector2(54, 48)
@@ -313,7 +313,7 @@ collision_layer = 2
 collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_cd24m")
-base_attack_damage = -10
+base_attack_damage = -5
 min_scale = 0.7
 hurt_sounds = Array[AudioStream]([ExtResource("2_1dp5w"), ExtResource("3_auwsv")])
 spawn_sounds = Array[AudioStream]([ExtResource("4_8uf12")])

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cveje662mdhmf" path="res://scenes/volume_slider.tscn" id="1_8ef0u"]
 [ext_resource type="Script" uid="uid://i6445kxw4vvt" path="res://scripts/button.gd" id="2_7y5a0"]
 [ext_resource type="Theme" uid="uid://dg40rt6poq8uy" path="res://THEME.tres" id="2_wswnh"]
+[ext_resource type="Texture2D" uid="uid://cadaeuvat45dq" path="res://assets/grass.png" id="4_labj1"]
 
 [node name="Settings menu" type="Control" unique_id=1183996973]
 layout_mode = 3
@@ -70,5 +71,12 @@ size_flags_vertical = 3
 theme = ExtResource("2_wswnh")
 text = "                   Back                   "
 script = ExtResource("2_7y5a0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1956761508]
+modulate = Color(0.49609226, 0.6625976, 0.35652035, 1)
+show_behind_parent = true
+position = Vector2(619, 340)
+scale = Vector2(0.66487646, 0.9001297)
+texture = ExtResource("4_labj1")
 
 [connection signal="pressed" from="VBoxContainer/Button" to="VBoxContainer/Button" method="_on_pressed"]

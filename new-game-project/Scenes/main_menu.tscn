@@ -61,6 +61,24 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 46
 text = "Count Down's Bullet Time"
 
+[node name="explenation label" type="Label" parent="." unique_id=157981099]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -475.0
+offset_top = 546.0
+offset_right = 127.0
+offset_bottom = 610.0
+grow_horizontal = 2
+scale = Vector2(1.0166063, 1.0933421)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 20
+text = "Check the itch page to learn controls and how the game works
+(it's a short explanation don't worry)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=168677444]
 modulate = Color(0.49609226, 0.6625976, 0.35652035, 1)
 show_behind_parent = true

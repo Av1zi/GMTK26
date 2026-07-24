@@ -63,6 +63,9 @@ position = Vector2(1120, 320)
 shape = SubResource("RectangleShape2D_akqs3")
 
 [node name="Player" parent="." unique_id=1572894333 instance=ExtResource("2_n47hv")]
+current_xp = 0
+xp_growth_rate = 1.0
+shot_timer_reduction = -0.3
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2053245044]
 position = Vector2(576, 323)
