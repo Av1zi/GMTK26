@@ -14,11 +14,12 @@ var best_time: float = 0.0
 var timer_running: bool = true
 const SAVE_PATH = "user://highscore.save"
 
+
 @onready var camera: Camera2D = $Camera2D
 @onready var death_screen: Control = $"UILayer/HUD/Death Screen"
-@onready var enemy_class = preload("res://Scenes/enemy.tscn")
-@onready var sun_enemy_class = preload("res://Scenes/enemySun.tscn")
-@onready var log_enemy_class = preload("res://Scenes/enemy_log.tscn")  # NEW
+@onready var enemy_class = preload("res://scenes/enemy.tscn")
+@onready var sun_enemy_class = preload("res://scenes/enemySun.tscn")
+@onready var log_enemy_class = preload("res://scenes/enemy_log.tscn")  # NEW
 @onready var player: CharacterBody2D = $Player
 @onready var noise = FastNoiseLite.new()
 @onready var rand = RandomNumberGenerator.new()
@@ -109,7 +110,7 @@ func _on_game_timer_time_expired():
 
 func _on_button_pressed():
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func _on_player_leveled_up(new_level: Variant) -> void:
 	level_label.text = "Level %d" % new_level

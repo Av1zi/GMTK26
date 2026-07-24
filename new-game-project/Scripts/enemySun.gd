@@ -35,8 +35,8 @@ var is_shot_cd: bool = false
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var damage_text: Label = $DamageTextContainer/DamageText
-@onready var blood_particle = preload("res://Scenes/blood_particle.tscn")
-@onready var bullet_scene = preload("res://Scenes/SunBullet.tscn")
+@onready var blood_particle = preload("res://scenes/blood_particle.tscn")
+@onready var bullet_scene = preload("res://scenes/SunBullet.tscn")
 @onready var character_sprite: Sprite2D = $CharacterSprite
 @onready var bullet_spawn_pos: Node2D = $BulletSpawnPoint
 @onready var shot_timer: Timer = $ShotTimer

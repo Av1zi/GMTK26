@@ -38,7 +38,7 @@ var original_collision_mask: int = 2
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var damage_text: Label = $DamageTextContainer/DamageText
-@onready var blood_particle = preload("res://Scenes/blood_particle.tscn")
+@onready var blood_particle = preload("res://scenes/blood_particle.tscn")
 @onready var attack_area: Area2D = $AttackArea
 @onready var attack_timer: Timer = $AttackTimer
 @onready var character_sprite = $CharacterSprite

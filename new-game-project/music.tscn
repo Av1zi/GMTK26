@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cd8uxw8pht2qk"]
+
+[ext_resource type="AudioStream" uid="uid://dvfuk0pwi0amh" path="res://assets/sound_effects/count down's bullet time song.mp3" id="1_3h6ak"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" unique_id=790651086]
+process_mode = 3
+stream = ExtResource("1_3h6ak")
+autoplay = true
+bus = &"Music"
