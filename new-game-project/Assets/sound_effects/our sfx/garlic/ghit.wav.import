@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c1n22oxu56fw5"
-path="res://.godot/imported/ghit.wav-d2c3227e0fed9ea18c644893d6bb97d6.sample"
+path="res://.godot/imported/ghit.wav-51441a09f1214b0a85ead6aeaa6953c5.sample"
 
 [deps]
 
-source_file="res://Assets/sound_effects/our sfx/garlic/ghit.wav"
-dest_files=["res://.godot/imported/ghit.wav-d2c3227e0fed9ea18c644893d6bb97d6.sample"]
+source_file="res://assets/sound_effects/our sfx/garlic/ghit.wav"
+dest_files=["res://.godot/imported/ghit.wav-51441a09f1214b0a85ead6aeaa6953c5.sample"]
 
 [params]
 

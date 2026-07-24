@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://bttvvdaxuprdg"]
 
-[ext_resource type="Script" uid="uid://byt2g68lko15e" path="res://Scripts/enemy.gd" id="1_s08bj"]
-[ext_resource type="AudioStream" uid="uid://bj6lio1eidvn7" path="res://Assets/sound_effects/our sfx/log/lhurt2.wav" id="2_j2ajw"]
-[ext_resource type="Texture2D" uid="uid://bhif7ff1xi8pe" path="res://Assets/LOG.png" id="2_s08bj"]
-[ext_resource type="AudioStream" uid="uid://bt56d6v6blhfy" path="res://Assets/sound_effects/our sfx/log/lhurt.wav" id="3_dj4lg"]
-[ext_resource type="AudioStream" uid="uid://cbnjmxqfcom10" path="res://Assets/sound_effects/our sfx/log/lspawn.wav" id="4_wq0m2"]
-[ext_resource type="AudioStream" uid="uid://bfh8n3dfrdtdg" path="res://Assets/sound_effects/our sfx/log/ldie2.wav" id="5_8mq2q"]
-[ext_resource type="AudioStream" uid="uid://06iwuo2ygi63" path="res://Assets/sound_effects/our sfx/log/ldie.wav" id="6_xqgw0"]
-[ext_resource type="AudioStream" uid="uid://dwr4yodnfy38y" path="res://Assets/sound_effects/our sfx/log/lhit1.wav" id="7_rflh2"]
-[ext_resource type="AudioStream" uid="uid://bxe77epgcvjwj" path="res://Assets/sound_effects/our sfx/log/lhit2.wav" id="8_mtm3j"]
+[ext_resource type="Script" uid="uid://byt2g68lko15e" path="res://scripts/enemy.gd" id="1_s08bj"]
+[ext_resource type="AudioStream" uid="uid://bj6lio1eidvn7" path="res://assets/sound_effects/our sfx/log/lhurt2.wav" id="2_j2ajw"]
+[ext_resource type="Texture2D" uid="uid://bhif7ff1xi8pe" path="res://assets/LOG.png" id="2_s08bj"]
+[ext_resource type="AudioStream" uid="uid://bt56d6v6blhfy" path="res://assets/sound_effects/our sfx/log/lhurt.wav" id="3_dj4lg"]
+[ext_resource type="AudioStream" uid="uid://cbnjmxqfcom10" path="res://assets/sound_effects/our sfx/log/lspawn.wav" id="4_wq0m2"]
+[ext_resource type="AudioStream" uid="uid://bfh8n3dfrdtdg" path="res://assets/sound_effects/our sfx/log/ldie2.wav" id="5_8mq2q"]
+[ext_resource type="AudioStream" uid="uid://06iwuo2ygi63" path="res://assets/sound_effects/our sfx/log/ldie.wav" id="6_xqgw0"]
+[ext_resource type="AudioStream" uid="uid://dwr4yodnfy38y" path="res://assets/sound_effects/our sfx/log/lhit1.wav" id="7_rflh2"]
+[ext_resource type="AudioStream" uid="uid://bxe77epgcvjwj" path="res://assets/sound_effects/our sfx/log/lhit2.wav" id="8_mtm3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3agpq"]
 size = Vector2(61, 68)
@@ -338,6 +338,12 @@ shape = SubResource("RectangleShape2D_3agpq")
 [node name="CharacterSprite" type="Sprite2D" parent="." unique_id=561135691]
 scale = Vector2(1.1, 1.1)
 texture = ExtResource("2_s08bj")
+
+[node name="Polygon2D" type="Polygon2D" parent="CharacterSprite" unique_id=1370170026]
+show_behind_parent = true
+position = Vector2(1.3251964, 6.0917907)
+scale = Vector2(1.70096, 2.3942115)
+polygon = PackedVector2Array(-13.1991625, 1.9521742, 10.840321, 2.1206, 5.6509933, -7.5737867, -13.646793, -4.8755417, -13.564837, -1.2727966)
 
 [node name="Shadow" type="Polygon2D" parent="." unique_id=1934900166]
 z_index = -46

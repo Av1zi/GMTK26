@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://bduw5gb057ino"]
 
-[ext_resource type="Script" uid="uid://6fsf3wirayay" path="res://Scripts/game.gd" id="1_5vnjt"]
-[ext_resource type="PackedScene" uid="uid://cqpatfifsn3sg" path="res://Scenes/player.tscn" id="2_n47hv"]
-[ext_resource type="PackedScene" uid="uid://iqdtrxlra3lw" path="res://Scenes/game_timer.tscn" id="3_lnu2h"]
-[ext_resource type="Script" uid="uid://i6445kxw4vvt" path="res://Scripts/button.gd" id="4_lbhrr"]
+[ext_resource type="Script" uid="uid://6fsf3wirayay" path="res://scripts/game.gd" id="1_5vnjt"]
+[ext_resource type="Texture2D" uid="uid://cadaeuvat45dq" path="res://assets/grass.png" id="2_gee14"]
+[ext_resource type="PackedScene" uid="uid://cqpatfifsn3sg" path="res://scenes/player.tscn" id="2_n47hv"]
+[ext_resource type="PackedScene" uid="uid://iqdtrxlra3lw" path="res://scenes/game_timer.tscn" id="3_lnu2h"]
+[ext_resource type="Script" uid="uid://i6445kxw4vvt" path="res://scripts/button.gd" id="4_lbhrr"]
 [ext_resource type="Theme" uid="uid://dg40rt6poq8uy" path="res://THEME.tres" id="4_u5sy4"]
-[ext_resource type="Script" uid="uid://cmmnukdk4yffy" path="res://Scripts/LevelUpUI.gd" id="6_u5sy4"]
-[ext_resource type="Script" uid="uid://behrtqn3jlawx" path="res://Scripts/UpgradePool.gd" id="7_gee14"]
+[ext_resource type="Script" uid="uid://cmmnukdk4yffy" path="res://scripts/LevelUpUI.gd" id="6_u5sy4"]
+[ext_resource type="Script" uid="uid://behrtqn3jlawx" path="res://scripts/UpgradePool.gd" id="7_gee14"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7nvpe"]
 size = Vector2(1024, 55.3125)
@@ -26,6 +27,12 @@ polygon = PackedVector2Array(-832, -896, -832, 1408, 2176, 1408, 2176, -896)
 [node name="StaticBody2D2" type="StaticBody2D" parent="Background" unique_id=1900450127]
 collision_layer = 3
 collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/StaticBody2D2" unique_id=752958257]
+modulate = Color(0.66171277, 0.60842633, 0.16334704, 1)
+position = Vector2(576.6905, 314.2575)
+scale = Vector2(0.552427, 0.69068104)
+texture = ExtResource("2_gee14")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D2" unique_id=417568546]
 position = Vector2(576, 27.6563)
@@ -54,11 +61,6 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D4" unique_id=1386532941]
 position = Vector2(1120, 320)
 shape = SubResource("RectangleShape2D_akqs3")
-
-[node name="Ground" type="Polygon2D" parent="." unique_id=2103978144]
-z_index = -49
-color = Color(0.913725, 0.847059, 0.65098, 1)
-polygon = PackedVector2Array(64, 56, 64, 320, 64, 584, 1088, 584, 1088, 56)
 
 [node name="Player" parent="." unique_id=1572894333 instance=ExtResource("2_n47hv")]
 

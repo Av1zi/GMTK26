@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://de3noa78pcams"
-path="res://.godot/imported/garlic spawn.wav-360b5653eb2174204f535b6bfe6b68b1.sample"
+path="res://.godot/imported/garlic spawn.wav-1811d871144c1e3b8437b2fe4951bba1.sample"
 
 [deps]
 
-source_file="res://Assets/sound_effects/our sfx/garlic/garlic spawn.wav"
-dest_files=["res://.godot/imported/garlic spawn.wav-360b5653eb2174204f535b6bfe6b68b1.sample"]
+source_file="res://assets/sound_effects/our sfx/garlic/garlic spawn.wav"
+dest_files=["res://.godot/imported/garlic spawn.wav-1811d871144c1e3b8437b2fe4951bba1.sample"]
 
 [params]
 

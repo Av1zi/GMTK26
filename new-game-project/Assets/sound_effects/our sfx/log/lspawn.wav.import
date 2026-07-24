@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cbnjmxqfcom10"
-path="res://.godot/imported/lspawn.wav-7ac450b6fe6a2c9ab94749b2bf11713b.sample"
+path="res://.godot/imported/lspawn.wav-3a503d5234cca1cff80af1a31a0c8d5b.sample"
 
 [deps]
 
-source_file="res://Assets/sound_effects/our sfx/log/lspawn.wav"
-dest_files=["res://.godot/imported/lspawn.wav-7ac450b6fe6a2c9ab94749b2bf11713b.sample"]
+source_file="res://assets/sound_effects/our sfx/log/lspawn.wav"
+dest_files=["res://.godot/imported/lspawn.wav-3a503d5234cca1cff80af1a31a0c8d5b.sample"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c8eqqsyo0g8al"
-path="res://.godot/imported/ghurt1.wav-42d7fc2e472a015bb6ac331ea61b44ff.sample"
+path="res://.godot/imported/ghurt1.wav-60148d0164dae701393a32a4b97f2cf4.sample"
 
 [deps]
 
-source_file="res://Assets/sound_effects/our sfx/garlic/ghurt1.wav"
-dest_files=["res://.godot/imported/ghurt1.wav-42d7fc2e472a015bb6ac331ea61b44ff.sample"]
+source_file="res://assets/sound_effects/our sfx/garlic/ghurt1.wav"
+dest_files=["res://.godot/imported/ghurt1.wav-60148d0164dae701393a32a4b97f2cf4.sample"]
 
 [params]
 

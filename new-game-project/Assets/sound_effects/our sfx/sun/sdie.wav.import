@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ttbvs6qcncsg"
-path="res://.godot/imported/sdie.wav-64060ecf31662f44cb5b275596f23406.sample"
+path="res://.godot/imported/sdie.wav-c3b4f6bf72a7ab78f0ea6e091117c101.sample"
 
 [deps]
 
-source_file="res://Assets/sound_effects/our sfx/sun/sdie.wav"
-dest_files=["res://.godot/imported/sdie.wav-64060ecf31662f44cb5b275596f23406.sample"]
+source_file="res://assets/sound_effects/our sfx/sun/sdie.wav"
+dest_files=["res://.godot/imported/sdie.wav-c3b4f6bf72a7ab78f0ea6e091117c101.sample"]
 
 [params]
 
