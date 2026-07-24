@@ -7,6 +7,13 @@ var enemy_list: Array = []
 var noise_i: float = 0.0
 var shake_strength: float = 0.0
 var round_number: int = 0
+
+# --- Survival time tracking ---
+var survival_time: float = 0.0
+var best_time: float = 0.0
+var timer_running: bool = true
+const SAVE_PATH = "user://highscore.save"
+
 @onready var camera: Camera2D = $Camera2D
 @onready var death_screen: Control = $"UILayer/HUD/Death Screen"
 @onready var enemy_class = preload("res://Scenes/enemy.tscn")
@@ -19,6 +26,10 @@ var round_number: int = 0
 @onready var level_label: Label = $UILayer/HUD/XPBar/LevelLabel
 @onready var level_up_ui = $"Level up ui"
 
+# --- New label references — update paths to match your scene tree ---
+@onready var current_time_label: Label = $"UILayer/HUD/Death Screen/Panel/CurrentTime"
+@onready var best_time_label: Label = $"UILayer/HUD/Death Screen/Panel/BestTime"
+
 func _ready():
 	var screen_size = get_viewport_rect().size
 	start_pos = Vector2(screen_size.x/2, screen_size.y/2)
@@ -28,8 +39,12 @@ func _ready():
 	rand.randomize()
 	noise.seed = rand.randi()
 	noise.frequency = 0.1
+	load_best_time()
 
 func _process(delta: float):
+	if timer_running:
+		survival_time += delta
+
 	if enemy_list.size() == 0:
 		round_number += 1
 		print("Spawning round: ", round_number)
@@ -77,11 +92,23 @@ func on_enemy_destroyed(enemy, xp_reward):
 	player.add_xp(xp_reward)
 
 func _on_game_timer_time_expired():
+	timer_running = false
 	get_tree().call_group("enemy", "queue_free")
+
+	# Update best time if this run beat it
+	var is_new_best = survival_time > best_time
+	if is_new_best:
+		best_time = survival_time
+		save_best_time()
+
+	current_time_label.text = "Time survived: %s" % format_time(survival_time)
+	best_time_label.text = "Best time: %s%s" % [format_time(best_time), "  (NEW!)" if is_new_best else ""]
+
 	death_screen.visible = true
 	get_tree().paused = true
 
 func _on_button_pressed():
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
 func _on_player_leveled_up(new_level: Variant) -> void:
@@ -90,3 +117,24 @@ func _on_player_leveled_up(new_level: Variant) -> void:
 func _on_player_xp_changed(current_xp: Variant, xp_to_next_level: Variant) -> void:
 	xp_bar.max_value = xp_to_next_level
 	xp_bar.value = current_xp
+
+# --- Save/load helpers ---
+func format_time(seconds: float) -> String:
+	var total_seconds := int(seconds)
+	var minutes := total_seconds / 60
+	var secs := total_seconds % 60
+	var millis := int((seconds - total_seconds) * 100)
+	return "%02d:%02d.%02d" % [minutes, secs, millis]
+
+func load_best_time():
+	if FileAccess.file_exists(SAVE_PATH):
+		var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
+		best_time = file.get_var()
+		file.close()
+	else:
+		best_time = 0.0
+
+func save_best_time():
+	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	file.store_var(best_time)
+	file.close()

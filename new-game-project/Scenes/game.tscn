@@ -111,7 +111,6 @@ vertical_alignment = 1
 
 [node name="Death Screen" type="Control" parent="UILayer/HUD" unique_id=1611158158]
 process_mode = 3
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -157,10 +156,45 @@ theme = ExtResource("4_u5sy4")
 text = "Menu"
 script = ExtResource("4_lbhrr")
 
+[node name="BestTime" type="Label" parent="UILayer/HUD/Death Screen/Panel" unique_id=1100930400]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.687
+anchor_right = 0.5
+anchor_bottom = 0.714
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CurrentTime" type="Label" parent="UILayer/HUD/Death Screen/Panel" unique_id=1603968411]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.558
+anchor_right = 0.5
+anchor_bottom = 0.585
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Upgrade pool" type="Node" parent="." unique_id=32721165]
 script = ExtResource("7_gee14")
 
 [node name="Level up ui" type="CanvasLayer" parent="." unique_id=1964463532 node_paths=PackedStringArray("upgrade_pool")]
+visible = false
 script = ExtResource("6_u5sy4")
 upgrade_pool = NodePath("../Upgrade pool")
 
