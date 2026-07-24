@@ -27,7 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="Label4" type="Label" parent="VBoxContainer" unique_id=1710834615]
+[node name="SETTINGS" type="Label" parent="VBoxContainer" unique_id=1710834615]
 layout_mode = 2
 theme_override_font_sizes/font_size = 31
 text = "Settings "
@@ -36,7 +36,7 @@ horizontal_alignment = 1
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=511100728]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=1437555608]
+[node name="master volume label" type="Label" parent="VBoxContainer" unique_id=1437555608]
 layout_mode = 2
 text = "Master volume"
 horizontal_alignment = 1
@@ -45,8 +45,7 @@ horizontal_alignment = 1
 layout_mode = 2
 bus_name = "Master"
 
-[node name="Label2" type="Label" parent="VBoxContainer" unique_id=1128716785]
-[node name="Label2" type="Label" parent="VBoxContainer"]
+[node name="music volume label" type="Label" parent="VBoxContainer" unique_id=1939740545]
 layout_mode = 2
 text = "Music  volume"
 horizontal_alignment = 1
@@ -55,7 +54,7 @@ horizontal_alignment = 1
 layout_mode = 2
 bus_name = "Music"
 
-[node name="Label3" type="Label" parent="VBoxContainer" unique_id=498863404]
+[node name="sfx volume label" type="Label" parent="VBoxContainer" unique_id=498863404]
 layout_mode = 2
 text = "Sfx  volume"
 horizontal_alignment = 1
