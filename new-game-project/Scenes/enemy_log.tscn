@@ -322,6 +322,7 @@ base_attack_damage = -30
 base_xp_reward = 30
 min_scale = 0.8
 max_scale = 5.0
+time_gained_on_death = 10.0
 attack_cooldown = 2.0
 spawn_invincible_time = 1.2
 hurt_sounds = Array[AudioStream]([ExtResource("2_j2ajw"), ExtResource("3_dj4lg")])

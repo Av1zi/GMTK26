@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dyrkux856grxn"]
 
-[ext_resource type="Script" uid="uid://bomiila8jid2y" path="res://Scripts/enemySun.gd" id="1_p5ush"]
-[ext_resource type="Texture2D" uid="uid://gyjqcy6xnddf" path="res://Assets/SON.png" id="2_p5ush"]
-[ext_resource type="AudioStream" uid="uid://bvpkyx1p3fjnk" path="res://Assets/sound_effects/our sfx/sun/shurt.wav" id="4_f6u85"]
-[ext_resource type="AudioStream" uid="uid://b5y5j2t81dq1l" path="res://Assets/sound_effects/laserShoot.wav" id="4_s4l83"]
-[ext_resource type="AudioStream" uid="uid://ttbvs6qcncsg" path="res://Assets/sound_effects/our sfx/sun/sdie.wav" id="5_s4l83"]
-[ext_resource type="AudioStream" uid="uid://85ri8kc5dfg6" path="res://Assets/sound_effects/our sfx/sun/sSpawn.wav" id="6_4nohw"]
+[ext_resource type="Script" uid="uid://bomiila8jid2y" path="res://scripts/enemySun.gd" id="1_p5ush"]
+[ext_resource type="Texture2D" uid="uid://gyjqcy6xnddf" path="res://assets/SON.png" id="2_p5ush"]
+[ext_resource type="AudioStream" uid="uid://bvpkyx1p3fjnk" path="res://assets/sound_effects/our sfx/sun/shurt.wav" id="4_f6u85"]
+[ext_resource type="AudioStream" uid="uid://b5y5j2t81dq1l" path="res://assets/sound_effects/laserShoot.wav" id="4_s4l83"]
+[ext_resource type="AudioStream" uid="uid://ttbvs6qcncsg" path="res://assets/sound_effects/our sfx/sun/sdie.wav" id="5_s4l83"]
+[ext_resource type="AudioStream" uid="uid://85ri8kc5dfg6" path="res://assets/sound_effects/our sfx/sun/sSpawn.wav" id="6_4nohw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x1lq2"]
 radius = 32.01562
@@ -346,6 +346,7 @@ motion_mode = 1
 script = ExtResource("1_p5ush")
 base_health = 60
 min_scale = 0.8
+time_gained_on_death = 6.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1693696865]
 light_mask = 3
